@@ -1,0 +1,12 @@
+/* pages.css */
+
+/* Home page */
+.home-hero{
+  
+}
+
+.home-featured,
+.home-deals,
+.home-best-sellers {
+  margin-top: var(--space-2xl);
+}
