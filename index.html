@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carve & Co. | Home</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header class="site-header">
         <div class="container">
             <nav>
-            
+
             </nav>
         </div>
     </header>
 
     <main class="site-main">
-
+        <h1 id="Test">Welcome to Carve & Co.</h1>
     </main>
 
     <footer class="site-footer">
         <div class="container">
             <nav>
-            
+
             </nav>
         </div>
     </footer>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/users.js"></script>
+    <script>
+        const userId = parseInt(new URL(location.href).searchParams.get("userid"));
+        console.log(userId);
+
+        if (userId > 0) {
+            const userInfo = getUserInfo(userId);
+            const h1 = document.getElementById("Test");
+            h1.innerText = `Welcome to Carve & Co., ${userInfo.name}!`;
+        }
+    </script>
 </body>
+
 </html>
