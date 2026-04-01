@@ -30,6 +30,16 @@ function getUserInfo(userId) {
   return null;
 }
 
+function validateLogin(email, password) {
+  // login validation
+  for (const user of users) {
+    if (user.email === email && user.password === password) {
+      return user.id;
+    }
+  }
+  return 0;
+}
+
 const users = [];
 
 // Example usage
@@ -37,13 +47,13 @@ const user1 = new User();
 user1.id = 1;
 user1.name = "Mihir Panchal";
 user1.email = "mihir@gmail.com";
-user1.password = "password123";
+user1.password = "123";
 users.push(user1);
 
 const user2 = new User();
 user2.id = 2;
-user2.name = "Jane Smith";
-user2.email = "jane.smith@example.com";
-user2.password = "password123";
+user2.name = "Ryan Bolt";
+user2.email = "ryan@gmail.com";
+user2.password = "456";
 users.push(user2);
 // console.log(user1.getUserInfo(user1.id));

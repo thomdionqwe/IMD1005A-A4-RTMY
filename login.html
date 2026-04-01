@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carve & Co. | Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav>
+                <h1>Login</h1>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <form id="loginForm" action="">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav>
+
+            </nav>
+        </div>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/users.js"></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const userId = validateLogin(email, password);
+
+            if (userId > 0) {
+                location.href = `index.html?userid=${userId}`;
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+    </script>
+</body>
+
+</html>
