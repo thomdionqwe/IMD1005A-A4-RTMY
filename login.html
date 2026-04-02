@@ -21,7 +21,7 @@
     <main class="site-main">
 
         <div class="container">
-            <form class="login-form" id="loginForm" action="submit">
+            <form class="form-box" id="loginForm" action="submit" onsubmit="event.preventDefault(); loginUser();">
                 <h2>Login</h2>
 
                 <div class="input-group">
@@ -37,7 +37,7 @@
                 <button type="submit" class="btn">Login</button>
 
                 <p class="signup-text">
-                    New here? <a href="#">Create an account</a>
+                    New here? <a href="registration.html">Create an account</a>
                 </p>
             </form>
         </div>
@@ -55,20 +55,28 @@
     <script src="js/main.js"></script>
     <script src="js/users.js"></script>
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
+        function loginUser() {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            const userId = validateLogin(email, password);
+            let users = JSON.parse(localStorage.getItem("users")) || [];
 
-            if (userId > 0) {
-                location.href = `index.html?userid=${userId}`;
+            const found = users.find(u => u.email === email && u.password === password);
+
+            if (found) {
+                alert("Login successful");
+
+                // Save session
+                localStorage.setItem("loggedInUser", JSON.stringify(found));
+
+                // Redirect to homepage
+                window.location.href = "index.html";
             } else {
-                alert("Invalid email or password. Please try again.");
+                alert("Invalid email or password");
             }
-        });
+        }
+
+
     </script>
 </body>
 

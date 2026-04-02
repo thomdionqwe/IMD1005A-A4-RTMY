@@ -18,7 +18,7 @@
     </header>
 
     <main class="site-main">
-        <h1 id="Test">Welcome to Carve & Co.</h1>
+        <h1 id="welcome">Welcome to Carve & Co.</h1>
     </main>
 
     <footer class="site-footer">
@@ -32,14 +32,12 @@
     <script src="js/main.js"></script>
     <script src="js/users.js"></script>
     <script>
-        const userId = parseInt(new URL(location.href).searchParams.get("userid"));
-        console.log(userId);
+        const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-        if (userId > 0) {
-            const userInfo = getUserInfo(userId);
-            const h1 = document.getElementById("Test");
-            h1.innerText = `Welcome to Carve & Co., ${userInfo.name}!`;
+        if (user) {
+            document.getElementById("welcome").textContent = `Welcome to Carve & Co., ${user.fullname}`;
         }
+        const userId = parseInt(localStorage.getItem("loggedInUserId"), 10);
     </script>
 </body>
 

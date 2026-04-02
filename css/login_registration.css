@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -26,22 +27,23 @@ body {
   color: #333;
 }
 
-/* Login Container */
+/* Shared container */
 .container {
   width: 100%;
-  max-width: 420px;
-  margin-top: 60px;
+  max-width: 450px;
+  margin-top: 50px;
   padding: 20px;
 }
 
-.login-box {
+/* Shared form box */
+.form-box {
   background: #ffffff;
   padding: 35px;
   border-radius: 14px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.login-box h2 {
+.form-box h2 {
   text-align: center;
   margin-bottom: 25px;
   color: #333;
@@ -57,7 +59,8 @@ body {
   color: #555;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
   width: 100%;
   padding: 12px;
   margin-top: 6px;
@@ -67,7 +70,8 @@ body {
   transition: 0.2s;
 }
 
-.input-group input:focus {
+.input-group input:focus,
+.input-group select:focus {
   border-color: #222;
   outline: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
@@ -90,26 +94,26 @@ body {
   background: #000;
 }
 
-/* Signup text */
-.signup-text {
+/* Text links */
+.text-link {
   text-align: center;
   margin-top: 15px;
   font-size: 14px;
 }
 
-.signup-text a {
+.text-link a {
   color: #222;
   text-decoration: none;
   font-weight: 500;
 }
 
-.signup-text a:hover {
+.text-link a:hover {
   text-decoration: underline;
 }
 
 /* Mobile */
 @media (max-width: 480px) {
-  .login-box {
+  .form-box {
     padding: 28px 22px;
   }
 }
