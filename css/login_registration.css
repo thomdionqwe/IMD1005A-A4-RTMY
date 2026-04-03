@@ -117,3 +117,44 @@ body {
     padding: 28px 22px;
   }
 }
+
+/* Payment layout container */
+.payment-layout {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: stretch; /* makes both boxes equal height */
+}
+
+/* Make both boxes equal width */
+.summary-box,
+.payment-box {
+  flex: 1;
+  min-width: 350px; /* prevents squishing */
+}
+
+/* Ensure both boxes stretch to same height */
+.summary-box,
+.payment-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Make input fields consistent */
+.summary-box .input-group input,
+.payment-box .input-group input {
+  width: 100%;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .payment-layout {
+    flex-direction: column;
+  }
+
+  .summary-box,
+  .payment-box {
+    width: 100%;
+  }
+}
