@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carve & Co. | Add Product</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login_registration.css">
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav>
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <form class="form-box" onsubmit="event.preventDefault(); addProduct();">
+            <h2>Add New Product</h2>
+
+            <div class="input-group">
+                <label>Product Name</label>
+                <input type="text" id="name" placeholder="Enter product name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Category</label>
+                <select id="category" required>
+                    <option value="">Select category</option>
+                    <option value="accessory">Accessory</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="decor">Decor</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Tags (comma separated)</label>
+                <input type="text" id="tags" placeholder="decor, natural, dark-wood">
+            </div>
+
+            <div class="input-group">
+                <label>Price ($)</label>
+                <input type="number" id="price" step="0.01" placeholder="44.99" required>
+            </div>
+
+            <div class="input-group">
+                <label>Dimensions</label>
+                <input type="text" id="dimensions" placeholder="30 x 30 x 5 cm">
+            </div>
+
+            <div class="input-group">
+                <label>Weight</label>
+                <input id="weight" placeholder="2.2 kg">
+            </div>
+
+            <div class="input-group">
+                <label>Description</label>
+                <input type="text" id="description" placeholder="Enter product description" required></input>
+            </div>
+
+            <!-- <div class="input-group">
+                <label>Rating</label>
+                <input type="number" id="rating" step="0.1" placeholder="4.6">
+            </div>
+
+            <div class="input-group">
+                <label>Rating Count</label>
+                <input type="number" id="ratingCount" placeholder="20">
+            </div> -->
+
+            <div class="input-group">
+                <label>Image URLs (comma separated)</label>
+                <input type="text" id="images" placeholder="img1.webp, img2.webp, img3.webp">
+            </div>
+
+            <div class="input-group">
+                <label>Featured</label>
+                <select id="featured">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Featured Image URL</label>
+                <input type="text" id="featuredImage" placeholder="featured.webp">
+            </div>
+
+            <div class="input-group">
+                <label>On Sale</label>
+                <select id="onSale">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Thumbnail Image URL</label>
+                <input type="text" id="thumbnailImage" placeholder="thumb.webp">
+            </div>
+
+            <button type="submit" class="btn">Add Product</button>
+        </form>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav>
+
+            </nav>
+        </div>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/users.js"></script>
+    <script>
+        function addProduct() {
+            const product = {
+                name: document.getElementById("name").value,
+                category: document.getElementById("category").value,
+                tags: document.getElementById("tags").value.split(",").map(t => t.trim()),
+                price: parseFloat(document.getElementById("price").value),
+                dimensions: document.getElementById("dimensions").value,
+                weight: document.getElementById("weight").value,
+                description: document.getElementById("description").value,
+                // rating: parseFloat(document.getElementById("rating").value),
+                // ratingCount: parseInt(document.getElementById("ratingCount").value),
+                images: document.getElementById("images").value.split(",").map(i => i.trim()),
+                featured: document.getElementById("featured").value === "true",
+                featuredImage: document.getElementById("featuredImage").value,
+                onSale: document.getElementById("onSale").value === "true",
+                thumbnailImage: document.getElementById("thumbnailImage").value
+            };
+
+            console.log(product);
+            alert("Product added successfully!");
+        }
+
+    </script>
+</body>
+
+</html>
