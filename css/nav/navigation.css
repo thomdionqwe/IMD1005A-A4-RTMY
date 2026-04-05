@@ -255,3 +255,7 @@
 .site-nav {
   width: 100%;
 }
+
+.hidden {
+    display: none;
+}

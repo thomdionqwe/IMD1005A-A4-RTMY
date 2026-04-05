@@ -845,6 +845,42 @@ window.addEventListener("resize", function ()
 });
 
 /* ---------------------------   */
-/*      mobile nav logic         */
+/*      user specific nav        */
 /* ---------------------------   */
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    const addProductLink = document.querySelector("#add-product-link");
+    //const loginLink = document.querySelector("#login-link");
+
+    if (user) 
+      {
+        // hide login
+        //if (loginLink) loginLink.classList.add("hidden");
+
+        // show add product only if business
+        if (user.type === "business") 
+          {
+            if (addProductLink) 
+              {
+                addProductLink.classList.remove("hidden");
+              }
+          } 
+          else 
+          {
+            if (addProductLink)
+              {
+                addProductLink.classList.add("hidden");
+              } 
+          }
+
+      } 
+    else 
+      {
+        // not logged in
+        if (addProductLink) addProductLink.classList.add("hidden");
+        //if (loginLink) loginLink.classList.remove("hidden");
+      }
+});
