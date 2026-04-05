@@ -246,3 +246,12 @@
   outline: 2px solid var(--color-border);
   outline-offset: 3px;
 }
+
+.site-header {
+  width: 100%;
+  align-self: stretch;
+}
+
+.site-nav {
+  width: 100%;
+}
