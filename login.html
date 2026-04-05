@@ -6,27 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carve & Co. | Login</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login_registration.css">
 </head>
 
 <body>
     <header class="site-header">
         <div class="container">
             <nav>
-                <h1>Login</h1>
+                <h1>Logo</h1>
             </nav>
         </div>
     </header>
 
     <main class="site-main">
-        <form id="loginForm" action="">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+        <div class="container">
+            <form class="form-box" id="loginForm" action="submit" onsubmit="event.preventDefault(); loginUser();">
+                <h2>Login</h2>
 
-            <button type="submit">Login</button>
-        </form>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+
+                <p class="signup-text">
+                    New here? <a href="registration.html">Create an account</a>
+                </p>
+            </form>
+        </div>
+
     </main>
 
     <footer class="site-footer">
@@ -40,20 +55,28 @@
     <script src="js/main.js"></script>
     <script src="js/users.js"></script>
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
+        function loginUser() {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            const userId = validateLogin(email, password);
+            let users = JSON.parse(localStorage.getItem("users")) || [];
 
-            if (userId > 0) {
-                location.href = `index.html?userid=${userId}`;
+            const found = users.find(u => u.email === email && u.password === password);
+
+            if (found) {
+                alert("Login successful");
+
+                // Save session
+                localStorage.setItem("loggedInUser", JSON.stringify(found));
+
+                // Redirect to homepage
+                window.location.href = "index.html";
             } else {
-                alert("Invalid email or password. Please try again.");
+                alert("Invalid email or password");
             }
-        });
+        }
+
+
     </script>
 </body>
 

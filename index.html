@@ -334,7 +334,7 @@
         </section>
 
 
-    </main> 
+    </main>
 
     <footer class="site-footer">
         <div class="container">
@@ -348,14 +348,12 @@
     <script src="js/main.js"></script>
     <script src="js/users.js"></script>
     <script>
-        const userId = parseInt(new URL(location.href).searchParams.get("userid"));
-        console.log(userId);
+        const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-        if (userId > 0) {
-            const userInfo = getUserInfo(userId);
-            const h1 = document.getElementById("Test");
-            h1.innerText = `Welcome to Carve & Co., ${userInfo.name}!`;
+        if (user) {
+            document.getElementById("welcome").textContent = `Welcome to Carve & Co., ${user.fullname}`;
         }
+        const userId = parseInt(localStorage.getItem("loggedInUserId"), 10);
     </script>
 </body>
 
