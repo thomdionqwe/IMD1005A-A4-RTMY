@@ -1,9 +1,9 @@
-
 /* -------------------------------------------------------------- */
 /*                      mobile behaviour                          */
 /* -------------------------------------------------------------- */
 
 /* handling generating mobile hamburger menu */
+const products = JSON.parse(localStorage.getItem("products")) || [];
 const hamburgerBtn = document.querySelector(".hamburger-btn");
 const mobileMenu = document.querySelector(".mobile-menu");
 const mobileCloseBtn = document.querySelector(".mobile-close-btn");
@@ -11,8 +11,7 @@ const mobileCloseBtn = document.querySelector(".mobile-close-btn");
 /* helper functions  openMobileMenu() : 
   shows the mobile menu and the overlay 
 */
-function openMobileMenu() 
-{
+function openMobileMenu() {
   if (!mobileMenu || !hamburgerBtn || !navOverlay) return;
 
   mobileMenu.classList.add("is-open");
@@ -23,8 +22,7 @@ function openMobileMenu()
 /* helper functions  closeMobileMenu(): 
   closes the mobile menu and the overlay 
 */
-function closeMobileMenu() 
-{
+function closeMobileMenu() {
   if (!mobileMenu || !hamburgerBtn || !navOverlay) return;
 
   mobileMenu.classList.remove("is-open");
@@ -33,26 +31,20 @@ function closeMobileMenu()
 }
 
 /* if the hamburger btn clicked : open  */
-if (hamburgerBtn) 
-{
-  hamburgerBtn.addEventListener("click", function () 
-  {
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener("click", function () {
     closeAllDesktopPanels();
     openMobileMenu();
   });
 }
 
 /* if the X btn clicked : close  */
-if (mobileCloseBtn) 
-{
-  mobileCloseBtn.addEventListener("click", function () 
-  {
+if (mobileCloseBtn) {
+  mobileCloseBtn.addEventListener("click", function () {
     closeMobileMenu();
   });
 }
 /* --------------------------------------------------------------   */
-
-
 
 /* -------------------------------------------------------------- */
 /*              dynamic menue panels rendering   :                */
@@ -68,56 +60,39 @@ const featuredBtn = document.querySelector("#featured-btn");
 const dealsBtn = document.querySelector("#deals-btn");
 
 /* accessibility : goona be use for accessibility */
-const desktopNavButtons = 
-[
-  shopBtn,
-  featuredBtn,
-  dealsBtn
-];
+const desktopNavButtons = [shopBtn, featuredBtn, dealsBtn];
 
 /*  accessibility  */
 /* to traverse the button with left and right arow  */
-desktopNavButtons.forEach((button, index) => 
-{
-  button.addEventListener("keydown", function (event) 
-  {
-      let nextIndex = null;
+desktopNavButtons.forEach((button, index) => {
+  button.addEventListener("keydown", function (event) {
+    let nextIndex = null;
 
-      if (event.key === "ArrowRight") 
-      {
-        nextIndex = index + 1;
-      } 
-      else if (event.key === "ArrowLeft") 
-      {
+    if (event.key === "ArrowRight") {
+      nextIndex = index + 1;
+    } else if (event.key === "ArrowLeft") {
       nextIndex = index - 1;
-      } 
-      else if (event.key === "ArrowDown") 
-      {
-        event.preventDefault();
-        button.click();
-        return;
-      } 
-      else 
-      {
-          return;
-      }
-
+    } else if (event.key === "ArrowDown") {
       event.preventDefault();
+      button.click();
+      return;
+    } else {
+      return;
+    }
 
-      if (nextIndex < 0)
-      {
-        nextIndex = desktopNavButtons.length - 1;
-      }
+    event.preventDefault();
 
-      if (nextIndex >= desktopNavButtons.length) 
-      {
-        nextIndex = 0;
-      }
+    if (nextIndex < 0) {
+      nextIndex = desktopNavButtons.length - 1;
+    }
 
-      desktopNavButtons[nextIndex].focus();
+    if (nextIndex >= desktopNavButtons.length) {
+      nextIndex = 0;
+    }
+
+    desktopNavButtons[nextIndex].focus();
   });
 });
-
 
 /* nav panels selectors  */
 const shopPanel = document.querySelector("#shop-panel");
@@ -129,59 +104,50 @@ const navOverlay = document.querySelector("#nav-overlay");
 
 /* ----  */
 /*  a shop button click open the shop panel and closes any other panel  */
-shopBtn.addEventListener("click", function () 
-{
+shopBtn.addEventListener("click", function () {
   const isOpen = shopPanel.classList.contains("is-open");
 
   closeAllDesktopPanels();
 
-  if (searchDropdown) 
-    {
-      searchDropdown.hidden = true;
-    }
+  if (searchDropdown) {
+    searchDropdown.hidden = true;
+  }
 
-  if (!isOpen) 
-    {
-      openDesktopPanel(shopPanel, shopBtn);
-    }
+  if (!isOpen) {
+    openDesktopPanel(shopPanel, shopBtn);
+  }
 });
 
 /* ----  */
 /*  a featured button click open the featured panel and closes any other panel  */
-featuredBtn.addEventListener("click", function () 
-{
-    const isOpen = featuredPanel.classList.contains("is-open");
+featuredBtn.addEventListener("click", function () {
+  const isOpen = featuredPanel.classList.contains("is-open");
 
-    closeAllDesktopPanels();
+  closeAllDesktopPanels();
 
-    if (searchDropdown) 
-    {
-      searchDropdown.hidden = true;
-    }
+  if (searchDropdown) {
+    searchDropdown.hidden = true;
+  }
 
-    if (!isOpen) 
-    {
-      openDesktopPanel(featuredPanel, featuredBtn);
-    }
+  if (!isOpen) {
+    openDesktopPanel(featuredPanel, featuredBtn);
+  }
 });
 
 /* ----  */
 /*  a featured button click open the featured panel and closes any other panel  */
-dealsBtn.addEventListener("click", function () 
-{
-    const isOpen = dealsPanel.classList.contains("is-open");
+dealsBtn.addEventListener("click", function () {
+  const isOpen = dealsPanel.classList.contains("is-open");
 
-    closeAllDesktopPanels();
+  closeAllDesktopPanels();
 
-    if (searchDropdown) 
-      {
-        searchDropdown.hidden = true;
-      }
+  if (searchDropdown) {
+    searchDropdown.hidden = true;
+  }
 
-    if (!isOpen) 
-      {
-        openDesktopPanel(dealsPanel, dealsBtn);
-      }
+  if (!isOpen) {
+    openDesktopPanel(dealsPanel, dealsBtn);
+  }
 });
 
 /* helper hunctions :   */
@@ -208,31 +174,23 @@ function closeAllDesktopPanels() {
   navOverlay.classList.remove("is-open");
 }
 
-
-
 /* ----  */
 /* a click on the overlay clsoese all the panels and menues  */
-navOverlay.addEventListener("click", function () 
-{
+navOverlay.addEventListener("click", function () {
   closeAllDesktopPanels(); // helper function
   closeMobileMenu();
 
-  navButtons.forEach(function (button) 
-  {
+  navButtons.forEach(function (button) {
     button.classList.remove("active");
   });
-
 });
 /* accessibility : escape button closes all panels  */
-document.addEventListener("keydown", function (event) 
-{
-  if (event.key === "Escape") 
-  {
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
     closeAllDesktopPanels();
     closeMobileMenu();
 
-    navButtons.forEach(function (button) 
-    {
+    navButtons.forEach(function (button) {
       button.classList.remove("active");
     });
   }
@@ -264,73 +222,68 @@ getting all the tags of the features product and putting them in a list
 const featuredTagsContainer = document.querySelector(".featured-tags");
 const featuredProductsContainer = document.querySelector(".featured-products");
 /* 1 - step one : we populate our tag array form the a list of products   */
-function getFeaturedTags(productsArray) 
-    {
-        const allTags = [];
+function getFeaturedTags(productsArray) {
+  const allTags = [];
 
-        for (const product of productsArray)
-            {
-                if (product.featured) 
-                    {
-                        for (const tag of product.tags) 
-                            {
-                                if (!allTags.includes(tag)) 
-                                    {
-                                        allTags.push(tag);
-                                    }
-                            }
-                    }
-            }
-
-        return allTags;
+  for (const product of productsArray) {
+    if (product.featured) {
+      for (const tag of product.tags) {
+        if (!allTags.includes(tag)) {
+          allTags.push(tag);
+        }
+      }
     }
+  }
+
+  return allTags;
+}
 
 /* 2- step 2 : render the tag button list  */
-function renderFeaturedTags(productsArray)
-    {
-        if (!featuredTagsContainer) return;
+function renderFeaturedTags(productsArray) {
+  if (!featuredTagsContainer) return;
 
-        const featuredTags = getFeaturedTags(productsArray);
+  const featuredTags = getFeaturedTags(productsArray);
 
-        // to start form scratch every time  
-        clearElement(featuredTagsContainer);
+  // to start form scratch every time
+  clearElement(featuredTagsContainer);
 
-        featuredTags.forEach((tag, index) =>
-            {
-                // creating a tag button element for each tag in the list 
-                // and adding it to the DOM 
-                const tagBtn = document.createElement("button");
-                tagBtn.type = "button";
-                tagBtn.classList.add("featured-tag-btn");
-                tagBtn.textContent = tag;
-                tagBtn.dataset.tag = tag;  // i wanna use it for event delegation  
+  featuredTags.forEach((tag, index) => {
+    // creating a tag button element for each tag in the list
+    // and adding it to the DOM
+    const tagBtn = document.createElement("button");
+    tagBtn.type = "button";
+    tagBtn.classList.add("featured-tag-btn");
+    tagBtn.textContent = tag;
+    tagBtn.dataset.tag = tag; // i wanna use it for event delegation
 
-                // this is to make the first tag active 
-                // and by default the tags products are rendered 
-                if (index === 0) 
-                    {
-                     tagBtn.classList.add("active");
-                     renderFeaturedProducts(productsArray, tag);
-                    }
-
-                featuredTagsContainer.appendChild(tagBtn);
-            }
-        );
+    // this is to make the first tag active
+    // and by default the tags products are rendered
+    if (index === 0) {
+      tagBtn.classList.add("active");
+      renderFeaturedProducts(productsArray, tag);
     }
+
+    featuredTagsContainer.appendChild(tagBtn);
+  });
+}
 
 renderFeaturedTags(products);
 
 /* step 3 : implement scrolling  */
 /* featured scrolling arrows  */
 const featuredTagsTrack = document.querySelector(".featured-tags");
-const featuredTagsArrowLeft = document.querySelector(".featured-tags-arrow-left");
-const featuredTagsArrowRight = document.querySelector(".featured-tags-arrow-right");
+const featuredTagsArrowLeft = document.querySelector(
+  ".featured-tags-arrow-left",
+);
+const featuredTagsArrowRight = document.querySelector(
+  ".featured-tags-arrow-right",
+);
 
 /* AI assisted :  */
 featuredTagsArrowLeft.addEventListener("click", function () {
   featuredTagsTrack.scrollBy({
     left: -200,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 });
 
@@ -338,143 +291,127 @@ featuredTagsArrowLeft.addEventListener("click", function () {
 featuredTagsArrowRight.addEventListener("click", function () {
   featuredTagsTrack.scrollBy({
     left: 200,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 });
 
 /* step 4 : listening to click on each tag in the tag list */
-featuredTagsContainer.addEventListener("click", function (event) 
-  {
-    // so first we need to get the tag button that was clicked 
-    const clickedBtn = event.target.closest(".featured-tag-btn");
+featuredTagsContainer.addEventListener("click", function (event) {
+  // so first we need to get the tag button that was clicked
+  const clickedBtn = event.target.closest(".featured-tag-btn");
 
-    if (!clickedBtn) return;
+  if (!clickedBtn) return;
 
-    // then we need to get all the other tags that weren't clicked 
-    const allTagButtons = featuredTagsContainer.querySelectorAll(".featured-tag-btn");
-    // for each tag that was not clicked we set it to in active
-    allTagButtons.forEach((button) => 
-      {
-        button.classList.remove("active");
-      }
-    );
+  // then we need to get all the other tags that weren't clicked
+  const allTagButtons =
+    featuredTagsContainer.querySelectorAll(".featured-tag-btn");
+  // for each tag that was not clicked we set it to in active
+  allTagButtons.forEach((button) => {
+    button.classList.remove("active");
+  });
 
-    // we set the clicked tag to active 
-    clickedBtn.classList.add("active");
+  // we set the clicked tag to active
+  clickedBtn.classList.add("active");
 
-    const selectedTag = clickedBtn.dataset.tag;
-    renderFeaturedProducts(products, selectedTag);
-  }
-);
-
-
-
-
+  const selectedTag = clickedBtn.dataset.tag;
+  renderFeaturedProducts(products, selectedTag);
+});
 
 /*    --------------------- tagged featured products  ---------------------------- */
-// here we want to render the products under each tag 
+// here we want to render the products under each tag
 
-// 1- we need a function to collect all the product that have a specific tag 
-function getFeaturedProductsByTag(productsArray, selectedTag) 
-{
-    const matchingProducts = [];
+// 1- we need a function to collect all the product that have a specific tag
+function getFeaturedProductsByTag(productsArray, selectedTag) {
+  const matchingProducts = [];
 
-    for (const product of productsArray) 
-      {
-        if (product.featured && product.tags.includes(selectedTag)) 
-          {
-            matchingProducts.push(product);
-          }
-      }
+  for (const product of productsArray) {
+    if (product.featured && product.tags.includes(selectedTag)) {
+      matchingProducts.push(product);
+    }
+  }
 
-    return matchingProducts;
+  return matchingProducts;
 }
 
-// 2- after we collect the tagged products we need to render them 
-function renderFeaturedProducts(productsArray, selectedTag) 
-{
-    if (!featuredProductsContainer) return;
+// 2- after we collect the tagged products we need to render them
+function renderFeaturedProducts(productsArray, selectedTag) {
+  if (!featuredProductsContainer) return;
 
-    const matchingProducts = getFeaturedProductsByTag(productsArray, selectedTag);
+  const matchingProducts = getFeaturedProductsByTag(productsArray, selectedTag);
 
-    clearElement(featuredProductsContainer);
+  clearElement(featuredProductsContainer);
 
-    
-    for (const product of matchingProducts) {
-      // create card 
-      const card = document.createElement("article");
-      card.classList.add("featured-product-card");
+  for (const product of matchingProducts) {
+    // create card
+    const card = document.createElement("article");
+    card.classList.add("featured-product-card");
 
-      // create image
-      const img = document.createElement("img");
-      img.classList.add("featured-product-image");
-      img.src = product.featuredImage;
-      img.alt = product.name;
+    // create image
+    const img = document.createElement("img");
+    img.classList.add("featured-product-image");
+    img.src = product.featuredImage;
+    img.alt = product.name;
 
-      // create title
-      const title = document.createElement("h3");
-      title.classList.add("featured-product-title");
-      title.textContent = product.name;
+    // create title
+    const title = document.createElement("h3");
+    title.classList.add("featured-product-title");
+    title.textContent = product.name;
 
-      // create price 
-      const price = document.createElement("p");
-      price.classList.add("featured-product-price");
+    // create price
+    const price = document.createElement("p");
+    price.classList.add("featured-product-price");
 
-      const [dollars, decimals] = product.price.toFixed(2).split(".");
+    const [dollars, decimals] = product.price.toFixed(2).split(".");
 
-      const dollarSign = document.createElement("span");
-      dollarSign.classList.add("price-currency");
-      dollarSign.textContent = "$";
+    const dollarSign = document.createElement("span");
+    dollarSign.classList.add("price-currency");
+    dollarSign.textContent = "$";
 
-      const mainAmount = document.createElement("span");
-      mainAmount.classList.add("price-main");
-      mainAmount.textContent = dollars;
+    const mainAmount = document.createElement("span");
+    mainAmount.classList.add("price-main");
+    mainAmount.textContent = dollars;
 
-      const decimalAmount = document.createElement("span");
-      decimalAmount.classList.add("price-decimal");
-      decimalAmount.textContent = `.${decimals}`;
+    const decimalAmount = document.createElement("span");
+    decimalAmount.classList.add("price-decimal");
+    decimalAmount.textContent = `.${decimals}`;
 
-      price.appendChild(dollarSign);
-      price.appendChild(mainAmount);
-      price.appendChild(decimalAmount);
+    price.appendChild(dollarSign);
+    price.appendChild(mainAmount);
+    price.appendChild(decimalAmount);
 
-      // assemble card
-      card.appendChild(img);
-      card.appendChild(title);
-      card.appendChild(price);
+    // assemble card
+    card.appendChild(img);
+    card.appendChild(title);
+    card.appendChild(price);
 
     // add to container
     featuredProductsContainer.appendChild(card);
-
-    }
+  }
 }
 
-// helper function to clear an element 
+// helper function to clear an element
 function clearElement(element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 }
 
-
 /* activating the nav links i forgot to do that  */
 
 const navButtons = document.querySelectorAll(".nav-btn");
 
-navButtons.forEach(btn => {
+navButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-
     // remove active from all
-    navButtons.forEach(b => b.classList.remove("active"));
+    navButtons.forEach((b) => b.classList.remove("active"));
 
     // activate clicked one
     btn.classList.add("active");
-
   });
 });
 
 navOverlay.addEventListener("click", () => {
-  navButtons.forEach(b => b.classList.remove("active"));
+  navButtons.forEach((b) => b.classList.remove("active"));
 });
 
 /* keyboard navigation  : accessibility */
@@ -483,40 +420,39 @@ navOverlay.addEventListener("click", () => {
    enter or space activates that tag  
    
    */
-featuredTagsContainer.addEventListener("keydown", function (event) 
-{
-    const currentBtn = event.target.closest(".featured-tag-btn");
-    if (!currentBtn) return;
+featuredTagsContainer.addEventListener("keydown", function (event) {
+  const currentBtn = event.target.closest(".featured-tag-btn");
+  if (!currentBtn) return;
 
-    const allButtons = Array.from(
-      featuredTagsContainer.querySelectorAll(".featured-tag-btn")
-    );
+  const allButtons = Array.from(
+    featuredTagsContainer.querySelectorAll(".featured-tag-btn"),
+  );
 
-    const currentIndex = allButtons.indexOf(currentBtn);
+  const currentIndex = allButtons.indexOf(currentBtn);
 
-    let nextIndex = null;
+  let nextIndex = null;
 
-    if (event.key === "ArrowRight") {
-      nextIndex = currentIndex + 1;
-    }
+  if (event.key === "ArrowRight") {
+    nextIndex = currentIndex + 1;
+  }
 
-    if (event.key === "ArrowLeft") {
-      nextIndex = currentIndex - 1;
-    }
+  if (event.key === "ArrowLeft") {
+    nextIndex = currentIndex - 1;
+  }
 
-    if (nextIndex !== null) {
-      event.preventDefault();
+  if (nextIndex !== null) {
+    event.preventDefault();
 
-      if (nextIndex < 0) nextIndex = allButtons.length - 1;
-      if (nextIndex >= allButtons.length) nextIndex = 0;
+    if (nextIndex < 0) nextIndex = allButtons.length - 1;
+    if (nextIndex >= allButtons.length) nextIndex = 0;
 
-      allButtons[nextIndex].focus();
-    }
+    allButtons[nextIndex].focus();
+  }
 
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      currentBtn.click();
-    }
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    currentBtn.click();
+  }
 });
 
 /* -------------------------------------------------------------- */
@@ -534,85 +470,73 @@ featuredTagsContainer.addEventListener("keydown", function (event)
 
 */
 
-// dealse sselectors 
+// dealse sselectors
 const dealsTagsContainer = document.querySelector(".deals-tags");
 const dealsProductsContainer = document.querySelector(".deals-products");
 
-// get tags from on sale products 
-function getDealsTags(productsArray) 
-{
-    const allTags = [];
+// get tags from on sale products
+function getDealsTags(productsArray) {
+  const allTags = [];
 
-    for (const product of productsArray) 
-      {
-        if (product.onSale) 
-          {
-          for (const tag of product.tags) 
-            {
-              if (!allTags.includes(tag)) 
-                {
-                  allTags.push(tag);
-                }
-            }
-          }
+  for (const product of productsArray) {
+    if (product.onSale) {
+      for (const tag of product.tags) {
+        if (!allTags.includes(tag)) {
+          allTags.push(tag);
+        }
       }
+    }
+  }
 
-    return allTags;
+  return allTags;
 }
 
 // redner the deals tags
-function renderDealsTags(productsArray) 
-{
+function renderDealsTags(productsArray) {
   if (!dealsTagsContainer) return;
 
   const dealsTags = getDealsTags(productsArray);
 
   clearElement(dealsTagsContainer);
 
-  dealsTags.forEach((tag, index) => 
-    {
-      const tagBtn = document.createElement("button");
-      tagBtn.type = "button";
-      tagBtn.classList.add("deals-tag-btn");
-      tagBtn.textContent = tag;
-      tagBtn.dataset.tag = tag;
+  dealsTags.forEach((tag, index) => {
+    const tagBtn = document.createElement("button");
+    tagBtn.type = "button";
+    tagBtn.classList.add("deals-tag-btn");
+    tagBtn.textContent = tag;
+    tagBtn.dataset.tag = tag;
 
-      if (index === 0) 
-        {
-          tagBtn.classList.add("active");
-        }
+    if (index === 0) {
+      tagBtn.classList.add("active");
+    }
 
-      dealsTagsContainer.appendChild(tagBtn);
-    });
+    dealsTagsContainer.appendChild(tagBtn);
+  });
 
-    if (dealsTags.length > 0) 
-      {
-        renderDealsProducts(productsArray, dealsTags[0]);
-      }
+  if (dealsTags.length > 0) {
+    renderDealsProducts(productsArray, dealsTags[0]);
+  }
 }
 
-// event delegartion on click 
-if (dealsTagsContainer) 
-  {
-    dealsTagsContainer.addEventListener("click", function (event) 
-    {
-        const clickedBtn = event.target.closest(".deals-tag-btn");
+// event delegartion on click
+if (dealsTagsContainer) {
+  dealsTagsContainer.addEventListener("click", function (event) {
+    const clickedBtn = event.target.closest(".deals-tag-btn");
 
-        if (!clickedBtn) return;
+    if (!clickedBtn) return;
 
-        const allButtons = dealsTagsContainer.querySelectorAll(".deals-tag-btn");
+    const allButtons = dealsTagsContainer.querySelectorAll(".deals-tag-btn");
 
-        allButtons.forEach((btn) => 
-          {
-            btn.classList.remove("active");
-          });
-
-        clickedBtn.classList.add("active");
-
-        const selectedTag = clickedBtn.dataset.tag;
-        renderDealsProducts(products, selectedTag);
+    allButtons.forEach((btn) => {
+      btn.classList.remove("active");
     });
-  }
+
+    clickedBtn.classList.add("active");
+
+    const selectedTag = clickedBtn.dataset.tag;
+    renderDealsProducts(products, selectedTag);
+  });
+}
 
 /* new : the sale bade logic: 
     created an element for the badge in DOM 
@@ -660,7 +584,7 @@ function renderDealsProducts(productsArray, selectedTag) {
     title.classList.add("deals-product-title");
     title.textContent = product.name;
 
-    // price 
+    // price
     const price = document.createElement("p");
     price.classList.add("deals-product-price");
 
@@ -702,7 +626,7 @@ if (dealsTagsArrowLeft && dealsTagsTrack) {
   dealsTagsArrowLeft.addEventListener("click", function () {
     dealsTagsTrack.scrollBy({
       left: -200,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   });
 }
@@ -711,11 +635,10 @@ if (dealsTagsArrowRight && dealsTagsTrack) {
   dealsTagsArrowRight.addEventListener("click", function () {
     dealsTagsTrack.scrollBy({
       left: 200,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   });
 }
-
 
 /* keyboard navigation : accessibility  */
 dealsTagsContainer.addEventListener("keydown", function (event) {
@@ -723,7 +646,7 @@ dealsTagsContainer.addEventListener("keydown", function (event) {
   if (!currentBtn) return;
 
   const allButtons = Array.from(
-    dealsTagsContainer.querySelectorAll(".deals-tag-btn")
+    dealsTagsContainer.querySelectorAll(".deals-tag-btn"),
   );
 
   const currentIndex = allButtons.indexOf(currentBtn);
@@ -748,8 +671,6 @@ dealsTagsContainer.addEventListener("keydown", function (event) {
   }
 });
 
-
-
 /* -------------------------------------------------------------- */
 /*                       SEAR5CH FORM                             */
 /* -------------------------------------------------------------- */
@@ -758,72 +679,62 @@ const searchInput = document.querySelector("#site-search");
 const searchForm = document.querySelector(".search-form");
 /* closing my panels when i am searching  */
 if (searchInput) {
-    searchInput.addEventListener("focus", function () {
+  searchInput.addEventListener("focus", function () {
     closeAllDesktopPanels();
   });
 }
 
 if (searchForm) {
-    searchForm.addEventListener("click", function () {
+  searchForm.addEventListener("click", function () {
     closeAllDesktopPanels();
   });
 }
 
-// showing the search drop down menu 
+// showing the search drop down menu
 const searchDropdown = document.querySelector("#search-dropdown");
-const searchSuggestionLinks = document.querySelectorAll(".search-suggestion-link");
+const searchSuggestionLinks = document.querySelectorAll(
+  ".search-suggestion-link",
+);
 
-// this copies the searches into the search bar 
-searchSuggestionLinks.forEach((link) => 
-  {
-    link.addEventListener("click", function () 
-    {
-      if (searchInput) 
-      {
-        searchInput.value = link.textContent;
-      }
+// this copies the searches into the search bar
+searchSuggestionLinks.forEach((link) => {
+  link.addEventListener("click", function () {
+    if (searchInput) {
+      searchInput.value = link.textContent;
+    }
 
-      if (searchDropdown) 
-      {
-        searchDropdown.hidden = true;
-      }
+    if (searchDropdown) {
+      searchDropdown.hidden = true;
+    }
   });
+});
+
+/* this show the dropo dwon menu when in focus or usr is typing in input */
+if (searchInput && searchDropdown) {
+  searchInput.addEventListener("focus", function () {
+    closeAllDesktopPanels();
+    searchDropdown.hidden = false;
   });
 
-  /* this show the dropo dwon menu when in focus or usr is typing in input */
-if (searchInput && searchDropdown) 
-  {
-    searchInput.addEventListener("focus", function ()
-    {
-        closeAllDesktopPanels();
-        searchDropdown.hidden = false;
-    });
-
-      searchInput.addEventListener("input", function () 
-      {
-        searchDropdown.hidden = false;
-      });
-  }
+  searchInput.addEventListener("input", function () {
+    searchDropdown.hidden = false;
+  });
+}
 /* 
     checking for clicks 
     insdie the search bar 
     or ousite the search bar : exit drop down 
  */
-document.addEventListener("click", function (event) 
-{
-
+document.addEventListener("click", function (event) {
   const clickedInsideSearch = event.target.closest(".nav-search");
 
-  if (!clickedInsideSearch && searchDropdown) 
-    {
-      searchDropdown.hidden = true;
-    }
+  if (!clickedInsideSearch && searchDropdown) {
+    searchDropdown.hidden = true;
+  }
 });
 
-
 /* closing the panels on resize  */
-function closeAllNavUI() 
-{
+function closeAllNavUI() {
   closeAllDesktopPanels();
 
   if (searchDropdown) {
@@ -839,12 +750,10 @@ function closeAllNavUI()
   }
 }
 
-window.addEventListener("resize", function () 
-{
+window.addEventListener("resize", function () {
   closeAllNavUI();
 });
 
 /* ---------------------------   */
 /*      mobile nav logic         */
 /* ---------------------------   */
-
