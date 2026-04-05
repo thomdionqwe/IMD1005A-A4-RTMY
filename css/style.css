@@ -2,4 +2,18 @@
 @import url("./reset.css");
 @import url("./layout.css");
 @import url("./components.css");
+
+@import url("./nav/navigation.css");
+
+@import url("./nav/nav_shop.css");
+@import url("./nav/nav_feature.css");
+@import url("./nav/nav_deals.css");
+@import url("./nav/nav_services.css");
+
+@import url("./nav/nav_search.css");
+
+@import url("./nav/nav_tablet.css");
+@import url("./nav/nav_mobile.css");
+
+
 @import url("./pages.css");

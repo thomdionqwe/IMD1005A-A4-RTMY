@@ -1,0 +1,370 @@
+/*  ----------------------- feature panel ------------------------------*/
+
+/* the section container */
+.featured-panel 
+{
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+
+    width: 100%;
+    background-color: var(--color-surface);
+
+
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+
+    transition:
+      opacity var(--transition-base),
+      transform var(--transition-base),
+      visibility var(--transition-base);
+}
+/* menu slide transition */
+.featured-panel.is-open 
+{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+/* ------------------------------------------------------*/
+
+/*.featured-panel-inner 
+
+  the main panel
+  a grid of 2 flex boxes and a link 
+
+*/
+.featured-panel-inner 
+{
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-lg);
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-xl);
+    row-gap: var(--space-lg);
+    align-items: start;
+}
+
+
+/* ------------------------------------------------------*/
+/* featured tag section   the first child in inner 
+
+   featured-panel-inner/.featured-tags-section
+*/
+/* first flex in the featrued panel  has 3 flex items 
+  1- left arrow 
+  2- flex box of the tag buttons 
+  3- right arrow
+*/
+.featured-tags-section 
+{
+
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+  margin-bottom: 0;
+}
+ 
+/* ------------------------------------------------------*/
+/* ------------------------------------------------------*/
+/* tag scrolling arrows 
+
+  featured-panel-inner/.featured-tags-section/.featured-tags-arrow
+*/
+.featured-tags-arrow 
+{
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-alt);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.featured-tags-arrow-right .icon 
+{
+  transform: rotate(180deg);
+}
+
+/* the tag list :
+  wrapper to contain the list 
+
+  featured-panel-inner/.featured-tags-section/.featured-tags-wrapper
+*/
+.featured-tags-wrapper 
+{
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* the tags flex box 
+
+  featured-panel-inner/.featured-tags-section/.featured-tags-wrapper/.featured-tags
+*/
+
+.featured-tags 
+{
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+/*  to keep them from stretching too wide*/
+.featured-tags-wrapper,
+.featured-products 
+{
+    max-width: 100%;
+}
+
+.featured-products-wrapper 
+{
+    min-width: 0;
+}
+/* 
+  these are the buttons created in js
+
+  ../.featured-tags-wrapper/.featured-tags/.featured-tag-btn 
+*/
+.featured-tag-btn 
+{
+    
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2xs) var(--space-md);
+
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-primary);
+
+    cursor: pointer;
+    white-space: nowrap;
+    flex: 0 0 auto;
+
+    transition: background var(--transition-fast),
+                color var(--transition-fast);
+}
+
+  /* tag buttons transitions */
+.featured-tag-btn.active 
+{
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.featured-tag-btn:not(.active):hover 
+{  
+  /* the hover doesn't affect the active button */
+  background: var(--color-surface-alt);
+}
+
+/* AI assisted */
+.featured-tags::-webkit-scrollbar 
+{
+    display: none;
+}
+
+
+/* ------------------------------------------------------*/
+/* the second child of  featured-panel-inner 
+
+  .featured-products contatiner a felx box of cards
+*/
+
+.featured-products 
+{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    display: flex;
+    gap: var(--space-md);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+}
+
+/* product card are created in js and added to DOM 
+   each card has 3 things :
+   1- image 
+   2- titel 
+   3- price
+*/
+.featured-product-card 
+{
+  flex: 0 0 220px;
+  width: 220px;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+    /* card children */
+    /* 1 : image*/
+    .featured-product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--radius-md);
+    }
+    /*2 - title */
+    .featured-product-title
+    {
+      font-family: var(--font-body);
+      margin-top: var(--space-sm);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--color-text-primary);
+
+      white-space: normal;
+      overflow-wrap: break-word;
+      line-height: 1.3;
+      letter-spacing: -0.4px;
+    }
+    /* 3- price */
+    .featured-product-price 
+    {
+      margin-top: var(--space-2xs);
+      color: var(--color-accent);
+      font-weight: var(--fw-bold);
+      line-height: 1;
+    } 
+
+    .price-currency {
+      font-size: 1rem;
+      vertical-align: top;
+      margin-right: 1px;
+    }
+
+    .price-main {
+      font-size: 2rem;
+      font-weight: var(--fw-bold);
+    }
+
+    /* to force the text to not spill into other cards */
+    .featured-product-title,
+    .featured-product-price 
+    {
+        width: 100%;
+    }
+
+    .featured-product-title,
+    .deals-product-title {
+      margin-top: var(--space-sm);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--color-text-primary);
+
+      line-height: 1.3;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 1;     
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+/* ------------------------------------------------------*/
+/* the third child of  featured-panel-inner 
+
+  a link to view the best sellers 
+*/
+.featured-callout {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  padding-right: var(--space-xl);
+}
+.featured-callout-eyebrow 
+{
+    font-family: var(--font-thin);
+    font-size: var(--fs-medium);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-primary);
+}
+
+.featured-callout-title 
+{
+    font-family: var(--font-logo);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    line-height: 1.1;
+    margin-top: var(--space-sm);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    letter-spacing: -3px;
+}
+    /* -----------------*/
+    /* link transitions */
+    .featured-callout:hover .featured-callout-title,
+    .featured-callout:focus-visible .featured-callout-title 
+    {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        color: var(--color-text-primary);
+    }
+    .featured-callout 
+    {
+        text-decoration: none;
+        color: var(--color-text-primary);
+    }
+
+    .featured-callout:focus-visible {
+        outline: 2px solid var(--color-border);
+        outline-offset: 4px;
+    }
+
+/* card transitions for both featured and deals */
+.featured-product-image-wrapper,
+.deals-product-image-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.featured-product-image,
+.deals-product-image {
+  transition: transform var(--transition-base);
+}
+
+.featured-product-card,
+.deals-product-card {
+  transition: transform var(--transition-fast);
+}
+
+.featured-product-card,
+.deals-product-card {
+  transition: transform var(--transition-fast);
+  transform-origin: center;
+}
+
+.featured-product-card:hover,
+.deals-product-card:hover {
+  transform: scale(1.03);
+}
+
+    

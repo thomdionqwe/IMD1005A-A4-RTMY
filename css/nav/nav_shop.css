@@ -1,0 +1,165 @@
+/* ------------------ shop panel -------------------- */
+/* shop-panel : section container */
+.shop-panel 
+{
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    background-color: var(--color-surface);
+
+
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+
+    transition:
+        opacity var(--transition-base),
+        transform var(--transition-base),
+        visibility var(--transition-base);
+        
+}
+/* menu slide transition */
+.shop-panel.is-open 
+{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+/* ------------------------------------------------------*/
+
+/*.shop-panel-inner : 
+   the main panel  */
+.shop-panel-inner 
+{
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+}
+
+/* -----------------------------*/
+/* .shop-all-link : first child */
+/* -----------------------------*/
+/*
+    ORDER : .shop-panel-inner/.shop-all-link
+*/
+.shop-all-link 
+{
+    display: inline-block;
+    margin-bottom: var(--space-md);
+
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.4px;
+    position: relative;
+}
+
+    /* shop all transition 
+       a line slides under the shop-all link on hover 
+    */
+    .shop-all-link::after 
+    {
+        content: "";
+        position: absolute;
+
+        left: 0;
+        bottom: -2px;
+
+        width: 0;
+        height: 1px;
+
+        background: var(--color-text-secondary);
+
+        transition: width var(--transition-fast);
+    }
+
+    .shop-all-link:hover::after 
+    {
+        width: 100%;
+    }
+
+/* --------------------------------*/
+/* .shop-categories : second child */
+/* --------------------------------*/
+/*
+    a grid for the categories because i wanted equal columns for each category
+    for now we have 3 categories : so grid made sense 
+    but for the future i think a flex would be better 
+
+*/
+.shop-categories 
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+}
+
+    /* each card is a flex of two items alligned vertically 
+        1- image representing the category 
+        2- the label under the image
+    */
+    .shop-category-card 
+    {
+        background: none;
+        border: none;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+
+        text-align: left;
+        cursor: pointer;
+    }
+        /* card first flex item : the image  */
+        .shop-category-image 
+        {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+        /* card second flex item : the label  */
+        .shop-category-label 
+        {
+            font-size: var(--fs-md);
+            font-weight: var(--fw-bold);
+            color: var(--color-text-primary);
+            letter-spacing: -0.2px;
+        }
+
+                /* category image transitions */
+                /* 
+                    the image zooms on hover 
+                */
+                .shop-category-image-wrapper 
+                {  /*a wrapper so the image don't spill*/
+                    overflow: hidden;
+                    border-radius: var(--radius-md);
+                }
+
+                .shop-category-image 
+                {
+                    width: 100%;
+                    height: 180px;
+                    object-fit: cover;
+
+                    transition: transform var(--transition-base);
+                }
+
+                .shop-category-card:hover .shop-category-image 
+                {
+                    transform: scale(1.08);
+                }
+
+                .shop-category-card:hover .shop-category-label 
+                {
+                    color: var(--color-text-secondary);
+                }

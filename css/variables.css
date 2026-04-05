@@ -2,25 +2,36 @@
 
 :root {
   /* Colors */
-  --color-bg: #f7f3ee;
+  --color-text-primary: #4d4d4d;
+  --color-text-secondary: #5f5f5f;
+  --color-text-light: #afafaf;
+
+
+  --color-bg: #f7f4f1;
   --color-surface: #ffffff;
-  --color-surface-alt: #efe7de;
+  --color-surface-alt: #f5f1ed;
   --color-text: #2f241f;
   --color-text-muted: #6e625c;
-  --color-heading: #241915;
-  --color-border: #ddd4cc;
+  --color-heading: #5f4c46;
+  --color-border: #d4cecb;
+  --color-logo : #bd775f;
 
-  --color-primary: #8b5e3c;
-  --color-primary-hover: #734d31;
+  --color-primary: #dd7b30;
+  --color-primary-alt: #bea794;
+  --color-primary-hover: s#734d31;
   --color-secondary: #d8c2a8;
-  --color-accent: #6a8f6b;
-  --color-sale: #b4442b;
+  --color-accent: #608b61;
+  --color-accent-alt: #cddfcd;
+  --color-sale: #d65050;
+  --color-sale-alt: #f5d2d2;
   --color-success: #3d7a4a;
   --color-error: #b4442b;
 
   /* Typography */
   --font-heading: "Georgia", serif;
   --font-body: Arial, Helvetica, sans-serif;
+  --font-logo: 'Abhaya Libre', serif;
+  --font-thin:'Inter', sans-serif;
 
   --fs-xs: 0.75rem;   /* 12px */
   --fs-sm: 0.875rem;  /* 14px */
@@ -31,6 +42,8 @@
   --fs-2xl: 2.5rem;   /* 40px */
   --fs-3xl: 3rem;     /* 48px */
 
+
+  --fw-thin: 100;
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
@@ -60,7 +73,7 @@
   --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.16);
 
   /* Layout */
-  --container-max: 1200px;
+  --container-max: 1500px;
   --header-height: 80px;
 
   /* Transitions */
