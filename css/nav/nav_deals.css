@@ -1,0 +1,272 @@
+/* -----------------------------------------------------------------*/
+/* 
+
+    *** the styling here is identical to nav_feature.css ***
+    the only difference is that there is a "on sale" badge 
+    over the images of the cards .. i commented on the changes
+
+    AI assisted : AI changed the names of my classes from featured to deals 
+
+*/
+
+/* -----------------------------------------------------------------*/
+.deals-panel 
+{
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+
+    width: 100%;
+    background-color: var(--color-surface);
+    z-index: 900;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+
+    transition:
+      opacity var(--transition-base),
+      transform var(--transition-base),
+      visibility var(--transition-base);
+}
+
+.deals-panel.is-open 
+{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.deals-panel-inner 
+{
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-lg);
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-xl);
+    row-gap: var(--space-lg);
+    align-items: start;
+}
+
+.deals-tags-section 
+{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    min-width: 0;
+}
+
+.deals-tags-arrow 
+{
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-sale-alt);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.deals-tags-arrow-right .icon 
+{
+  transform: rotate(180deg);
+}
+
+.deals-tags-wrapper 
+{
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;  /* different from the featured : wanna create stacking context for the sale badge*/
+}
+
+/* -----------------------------------------------*/
+/* different form featured :: on sale badge */
+.deals-product-image-wrapper {
+  position: relative;
+}
+
+.deals-sale-badge {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+
+  width:50px;
+  height: 50px;
+
+  display: block;
+  object-fit: contain;
+
+  background: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  pointer-events: none;
+}
+/* -----------------------------------------------*/
+
+.deals-tags 
+{
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.deals-tags::-webkit-scrollbar 
+{
+  display: none;
+}
+
+.deals-tag-btn 
+{
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2xs) var(--space-md);
+
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+
+  cursor: pointer;
+  white-space: nowrap;
+  flex: 0 0 auto;
+
+  transition: background var(--transition-fast),
+              color var(--transition-fast);
+}
+
+.deals-tag-btn.active 
+{
+  background: var(--color-sale);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.deals-tag-btn:not(.active):hover 
+{
+  background: var(--color-surface-alt);
+}
+
+.deals-products 
+{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+}
+
+.deals-product-card 
+{
+  flex: 0 0 220px;
+  width: 220px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.deals-product-image
+{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.deals-product-title 
+{
+    font-family: var(--font-body);
+    margin-top: var(--space-sm);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-primary);
+
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+}
+
+.deals-product-price 
+{
+  margin-top: var(--space-2xs);
+  color: var(--color-sale);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.deals-callout 
+{
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    padding-right: var(--space-xl);
+}
+
+.deals-callout-eyebrow 
+{
+    font-family: var(--font-thin);
+    font-size: var(--fs-medium);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-primary);
+}
+
+.deals-callout-title 
+{
+    font-family: var(--font-logo);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    line-height: 1.1;
+    margin-top: var(--space-sm);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    letter-spacing: -3px;
+}
+
+.deals-callout:hover .deals-callout-title,
+.deals-callout:focus-visible .deals-callout-title 
+{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--color-text-primary);
+}
+
+.deals-callout 
+    {
+        text-decoration: none;
+        color: var(--color-text-primary);
+    }
+
+.deals-callout:focus-visible 
+    {
+        outline: 2px solid var(--color-border);
+        outline-offset: 4px;
+    }

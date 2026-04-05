@@ -1,0 +1,139 @@
+/* ------------------------------------------------------------*/
+/*               site-nav : second child                       */
+/* ------------------------------------------------------------*/
+
+/* -------------------the search form------------------------- */
+
+/* the main container for ssearch a 
+    felx item under site-nav felx box*/
+.nav-search 
+{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative; /* to create a stacking context for the search menu*/
+    
+}
+
+/*  search form : a felx box of two felx items :
+    1- the search button 
+    2- the search bar (input)
+*/
+.search-form 
+{
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 400px;
+
+    border: none;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface-alt);
+    padding: 0 var(--space-sm);
+}
+/* 1- the search button */
+.search-submit-btn 
+{
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: var(--space-xs);
+
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+    /*search button transitions*/
+    .search-form:focus-within .search-submit-btn 
+    {
+        opacity: 1;
+    }
+
+
+/* 2- the search bar (input) */
+.search-input 
+{
+    flex: 1;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--color-text-primary);
+
+    padding: var(--space-sm) 0;
+}
+    /*search input transitions */
+    .search-input::placeholder 
+    {
+    color: var(--color-text-muted);
+    }
+
+    .search-form:focus-within 
+    {
+    background-color: var(--color-surface);
+    box-shadow: 0 0 0 2px var(--color-border);
+    }
+
+
+
+/* the search drop down style */
+/* the main menu */
+.search-dropdown 
+{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 400px;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+
+    padding: var(--space-md);
+    z-index: 950;
+}
+/* the first child in the drop down : title */
+.search-dropdown-title {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+/* the second child in the drop down : the common searches  */
+.search-common-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+/* each common search in the common list */
+.search-suggestion-link {
+  display: inline-block;
+
+
+
+
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.search-suggestion-link:hover,
+.search-suggestion-link:focus-visible {
+  background: var(--color-surface);
+}

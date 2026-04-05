@@ -1,0 +1,19 @@
+/*  Tablet Behavior  */
+@media (max-width: 1023px) 
+{
+    .nav-links 
+    {
+        display: none;
+    }
+
+    .hamburger-btn 
+    {
+        display: flex;
+    }
+
+    .search-form 
+    {
+        max-width: 450px;
+    }
+}
+
