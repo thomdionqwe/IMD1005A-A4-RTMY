@@ -460,7 +460,7 @@ function initializeDefaultProducts() {
   });
 
   // Save merged list back to LocalStorage
-  localStorage.setItem("defaultProducts", JSON.stringify(storedProducts));
+  localStorage.setItem("products", JSON.stringify(storedProducts));
 }
 
 // Run this once on page load
