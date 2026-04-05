@@ -325,9 +325,9 @@
                 <label>Category</label>
                 <select id="category" required>
                     <option value="">Select category</option>
+                    <option value="table">Table</option>
+                    <option value="shelf">Shelf</option>
                     <option value="accessory">Accessory</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="decor">Decor</option>
                 </select>
             </div>
 
@@ -412,29 +412,9 @@
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
     <script src="js/users.js"></script>
+    <script src="js/crudProduct.js"></script>
     <script>
-        function addProduct() {
-            const product = {
-                name: document.getElementById("name").value,
-                category: document.getElementById("category").value,
-                tags: document.getElementById("tags").value.split(",").map(t => t.trim()),
-                price: parseFloat(document.getElementById("price").value),
-                dimensions: document.getElementById("dimensions").value,
-                weight: document.getElementById("weight").value,
-                description: document.getElementById("description").value,
-                // rating: parseFloat(document.getElementById("rating").value),
-                // ratingCount: parseInt(document.getElementById("ratingCount").value),
-                images: document.getElementById("images").value.split(",").map(i => i.trim()),
-                featured: document.getElementById("featured").value === "true",
-                featuredImage: document.getElementById("featuredImage").value,
-                onSale: document.getElementById("onSale").value === "true",
-                thumbnailImage: document.getElementById("thumbnailImage").value
-            };
-
-            console.log(product);
-            alert("Product added successfully!");
-        }
-
+        console.log(JSON.parse(localStorage.getItem("products")));
     </script>
 </body>
 
