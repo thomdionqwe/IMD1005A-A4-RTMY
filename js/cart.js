@@ -104,3 +104,15 @@ function goToCheckout() {
 
 loadCart();
 saveCartCount();
+
+function updateCartBadge() {
+  const badge = document.querySelector(".cart-badge");
+  const count = localStorage.getItem("cartCount") || 0;
+
+  if (badge) {
+    badge.textContent = count;
+    badge.style.display = count > 0 ? "flex" : "none";
+  }
+}
+
+updateCartBadge();
