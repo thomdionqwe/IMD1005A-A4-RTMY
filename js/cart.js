@@ -6,6 +6,11 @@ function initializeCart() {
 
 initializeCart();
 
+function saveCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  localStorage.setItem("cartCount", cart.length);
+}
+
 function addToCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -15,6 +20,7 @@ function addToCart(productId) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+  saveCartCount();
   //   alert("Item added to cart!");
 }
 
@@ -30,7 +36,7 @@ function removeFromCart(productId) {
   cart = cart.filter((id) => id !== productId);
 
   localStorage.setItem("cart", JSON.stringify(cart));
-
+  saveCartCount();
   loadCart(); // refresh
 }
 
@@ -97,3 +103,16 @@ function goToCheckout() {
 }
 
 loadCart();
+saveCartCount();
+
+function updateCartBadge() {
+  const badge = document.querySelector(".cart-badge");
+  const count = localStorage.getItem("cartCount") || 0;
+
+  if (badge) {
+    badge.textContent = count;
+    badge.style.display = count > 0 ? "flex" : "none";
+  }
+}
+
+updateCartBadge();

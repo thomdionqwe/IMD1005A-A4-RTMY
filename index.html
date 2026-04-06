@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carve & Co. | Home</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -297,13 +297,19 @@
         <h1 id="Test"></h1>
 
 
-        <section class="home-featured">
+        <!-- <section class="home-featured">
             <div class="container">
                 <h2></h2>
 
                 <div class="product-list"></div>
             </div>
+        </section> -->
+        <section id="categorySections"></section>
+        <section class="product-section">
+            <!-- <h2 class="section-title">Explore Our Products</h2> -->
+            <div id="productGrid" class="product-grid"></div>
         </section>
+
 
 
     </main>
@@ -318,11 +324,33 @@
     <script src="js/data.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/users.js"></script>
+    <!-- <script src="js/cart.js"></script> -->
     <script>
         const user = JSON.parse(localStorage.getItem("loggedInUser"));
         const users = JSON.parse(localStorage.getItem("users"));
         const userId = parseInt(localStorage.getItem("loggedInUserId"), 10);
+        function updateCartBadge() {
+            const badge = document.querySelector(".cart-badge");
+            const count = localStorage.getItem("cartCount") || 0;
+
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? "flex" : "none";
+            }
+        }
+        updateCartBadge();
+        function addToCart(productId) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.push(productId);
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            localStorage.setItem("cartCount", cart.length);
+
+            updateCartBadge();
+        }
     </script>
 </body>
 

@@ -25,8 +25,18 @@ function processPayment() {
     return;
   }
 
-  alert("Payment Successful!");
-  window.location.href = "index.html";
+  // Show popup
+  document.getElementById("paymentSuccessPopup").style.display = "flex";
+
+  // Clear cart
+  localStorage.setItem("cart", JSON.stringify([]));
+  localStorage.setItem("cartCount", 0);
+  //   window.location.href = "index.html";
+}
+
+function closeSuccessPopup() {
+  document.getElementById("paymentSuccessPopup").style.display = "none";
+  window.location.href = "index.html"; // redirect to home or orders page
 }
 
 function getCartSubtotal() {
