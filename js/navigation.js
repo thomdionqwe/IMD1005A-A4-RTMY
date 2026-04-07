@@ -1,13 +1,14 @@
 
+console.log("navigation.js loaded");
 /* add prodcut icon logic  */
 const addProductLink = document.querySelector("#add-product-link");
 const loginLink = document.querySelector("#login-link");
 
 const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-
 if (addProductLink) addProductLink.classList.add("hidden");
-
+console.log("before logic:", addProductLink?.className);
+console.log("user at nav:", user);
 
 if (!user) 
   {
