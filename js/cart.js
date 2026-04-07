@@ -24,11 +24,11 @@ function addToCart(productId) {
   //   alert("Item added to cart!");
 }
 
-addToCart("table-1");
-addToCart("table-3");
-addToCart("table-5");
-addToCart("shelf-1");
-addToCart("shelf-1");
+//addToCart("table-1");
+//addToCart("table-3");
+//addToCart("table-5");
+//addToCart("shelf-1");
+//addToCart("shelf-1");
 
 function removeFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
