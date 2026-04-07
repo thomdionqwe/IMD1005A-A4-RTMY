@@ -34,22 +34,37 @@
                 <ul class="nav-links">
 
                     <li>
-                        <button class="nav-btn" id="shop-btn" type="button" aria-expanded="false"
-                            aria-controls="shop-panel">
+                        <button 
+                            class="nav-btn"
+                            id="shop-btn"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="shop-panel"
+                        >   
                             Shop
                         </button>
                     </li>
 
                     <li>
-                        <button class="nav-btn" id="featured-btn" type="button" aria-expanded="false"
-                            aria-controls="featured-panel">
-                            Featured
+                        <button 
+                            class="nav-btn"
+                            id="featured-btn"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="featured-panel"
+                        >
+                        Featured
                         </button>
                     </li>
 
                     <li>
-                        <button class="nav-btn" id="deals-btn" type="button" aria-expanded="false"
-                            aria-controls="deals-panel">
+                        <button
+                            class="nav-btn"
+                            id="deals-btn"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="deals-panel"
+                        >
                             Deals
                         </button>
                     </li>
@@ -66,14 +81,20 @@
             -->
             <div class="nav-search">
                 <form class="search-form" action="#" role="search">
-                    <label for="site-search" class="sr-only">Search Carve &amp; Co.</label>
+                     <label for="site-search" class="sr-only">Search Carve &amp; Co.</label>
 
-                    <button type="submit" class="search-submit-btn" aria-label="Submit search">
+                     <button type="submit" class="search-submit-btn" aria-label="Submit search">
                         <img src="images/ui/icons/icon-search.svg" alt="" class="icon">
-                    </button>
+                     </button>
 
-                    <input type="search" id="site-search" name="site-search" class="search-input"
-                        placeholder="Search Carve &amp; Co." autocomplete="off">
+                     <input
+                        type="search"
+                        id="site-search"
+                        name="site-search"
+                        class="search-input"
+                        placeholder="Search Carve &amp; Co."
+                        autocomplete="off" 
+                    >
                 </form>
                 <!--  most common search -->
                 <!--  
@@ -99,11 +120,7 @@
             <!-- nav third child  : nav-right    -->
             <!-- ------------------------------- -->
             <div class="nav-right">
-                <a href="addProduct.html" id="add-product-link" class="nav-icon-link" aria-label="add product">
-                    <img src="images/ui/icons/icon-plus.svg" alt="" class="icon">
-                </a>
-
-                <a href="login.html" id="login-link" class="nav-icon-link" aria-label="login">
+                <a href="login.html" class="nav-icon-link" aria-label="Wishlist">
                     <img src="images/ui/icons/icon-user.svg" alt="" class="icon">
                 </a>
                 <a href="favorites.html" class="nav-icon-link" aria-label="Wishlist">
@@ -111,19 +128,24 @@
                 </a>
                 <a href="cart.html" class="nav-icon-link" aria-label="Cart">
                     <img src="images/ui/icons/icon-cart.svg" alt="" class="icon">
-                    <span class="cart-badge">0</span> <!-- counter for cart -->
+                    <span class="cart-badge">0</span>  <!-- counter for cart -->
                 </a>
-                <button type="button" class="hamburger-btn" aria-label="Open menu" aria-expanded="false">
-                    <img src="images/ui/icons/icon-menu.svg" alt="" class="icon">
+                <button 
+                    type="button"
+                    class="hamburger-btn"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                >
+                    <img src="images/ui/icons/icon-menu.svg" alt="" class="icon" >
                 </button>
             </div>
-
-            <!-- end of nav -->
-            <!-- ---------------------------------------  -->
+        
+        <!-- end of nav -->
+        <!-- ---------------------------------------  -->
         </nav>
-
-        <!-- the overlay will always dispaly under the nave special panels -->
-        <div class="nav-overlay" id="nav-overlay">
+    
+         <!-- the overlay will always dispaly under the nave special panels -->
+        <div class="nav-overlay" id="nav-overlay" >
             <!-- will be activated when the nav menue panel drop -->
         </div>
 
@@ -147,15 +169,14 @@
         -->
         <section class="shop-panel" id="shop-panel">
             <div class="shop-panel-inner">
-
+                
                 <a href="products.html?filter=all" class="shop-all-link">Shop all</a>
 
                 <div class="shop-categories">
                     <button type="button" class="shop-category-card">
 
                         <div class="shop-category-image-wrapper">
-                            <img src="images/categories/shelves.webp" alt="Wood shelves category"
-                                class="shop-category-image">
+                            <img src="images/categories/shelves.webp" alt="Wood shelves category" class="shop-category-image">                            
                         </div>
                         <span class="shop-category-label">Shelves</span>
 
@@ -164,21 +185,19 @@
                     <button type="button" class="shop-category-card">
 
                         <div class="shop-category-image-wrapper">
-                            <img src="images/categories/tables.webp" alt="Wood tables category"
-                                class="shop-category-image">
+                            <img src="images/categories/tables.webp" alt="Wood tables category" class="shop-category-image">
                         </div>
                         <span class="shop-category-label">Tables</span>
-
+                        
                     </button>
 
                     <button type="button" class="shop-category-card">
 
                         <div class="shop-category-image-wrapper">
-                            <img src="images/categories/accessories.webp" alt="Wood accessories category"
-                                class="shop-category-image">
+                            <img src="images/categories/accessories.webp" alt="Wood accessories category" class="shop-category-image">   
                         </div>
                         <span class="shop-category-label">Accessories</span>
-
+                
                     </button>
                 </div>
 
@@ -193,11 +212,10 @@
             and under it a list of product that belong to the active tag
             and next to it an option to veiw all feature products 
         -->
-        <section class="featured-panel" id="featured-panel">
+        <section class="featured-panel" id="featured-panel" >
             <div class="featured-panel-inner">
                 <div class="featured-tags-section">
-                    <button type="button" class="featured-tags-arrow featured-tags-arrow-left"
-                        aria-label="Scroll tags left">
+                    <button type="button" class="featured-tags-arrow featured-tags-arrow-left" aria-label="Scroll tags left">
                         <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
                     </button>
 
@@ -207,12 +225,11 @@
                         </div>
                     </div>
 
-                    <button type="button" class="featured-tags-arrow featured-tags-arrow-right"
-                        aria-label="Scroll tags right">
+                    <button type="button" class="featured-tags-arrow featured-tags-arrow-right" aria-label="Scroll tags right">
                         <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
                     </button>
                 </div>
-
+                 
                 <div class="featured-products">
                     <a href="products.html?filter=featured" class="featured-view-all-link">View all featured</a>
                 </div>
@@ -227,28 +244,26 @@
         <!--****      ---------------        ****-->
         <!--****       Deals  panel          ****-->
         <!--****      ---------------        ****-->
-        <section class="deals-panel" id="deals-panel">
+        <section class="deals-panel" id="deals-panel" >
             <div class="deals-panel-inner">
                 <div class="deals-tags-section">
-                    <button type="button" class="deals-tags-arrow deals-tags-arrow-left"
-                        aria-label="Scroll deals tags left">
+                    <button type="button" class="deals-tags-arrow deals-tags-arrow-left" aria-label="Scroll deals tags left">
                         <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
                     </button>
 
                     <div class="deals-tags-wrapper">
                         <div class="deals-tags">
-                            <!-- JS will render tag buttons -->
+                        <!-- JS will render tag buttons -->
                         </div>
                     </div>
 
-                    <button type="button" class="deals-tags-arrow deals-tags-arrow-right"
-                        aria-label="Scroll deals tags right">
+                    <button type="button" class="deals-tags-arrow deals-tags-arrow-right" aria-label="Scroll deals tags right">
                         <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
                     </button>
                 </div>
 
                 <div class="deals-products">
-                    <!-- JS will render deal product cards -->
+                <!-- JS will render deal product cards -->
                 </div>
 
                 <a href="products.html?filter=onsale" class="deals-callout">
@@ -289,10 +304,10 @@
                     </li>
                 </ul>
 
-            </div>
+             </div>
         </aside>
 
-
+       
     </header>
 
     <main class="site-main">
@@ -321,95 +336,17 @@
 
     </main>
 
-     <footer class="site-footer">
+    <footer class="site-footer">
+        <div class="container">
+            <nav>
 
-        <div class="footer-container">
-
-            <div class="footer-brand">
-
-                <h2 class="footer-logo">
-                    Carve&Co.
-                </h2>
-
-                <p class="footer-description">
-                    Crafted wooden décor designed to bring warmth, 
-                    character into every home.
-                </p>
-
-                <div class="footer-socials">
-
-                    <a href="#" aria-label="Visit our first social media page">
-                        <img src="images/ui/icons/icon-social-link-1.svg" alt="">
-                    </a>
-                    <a href="#" aria-label="Visit our second social media page">
-                        <img src="images/ui/icons/icon-social-link-2.svg" alt="">
-                    </a>
-                    <a href="#" aria-label="Visit our third social media page">
-                        <img src="images/ui/icons/icon-social-link-3.svg" alt="">
-                    </a>
-
-                </div>
-
-
-            </div>
-
-            <div class="footer-links">
-
-                <div class="footer-column">
-
-                    <button class="footer-toggle" type="button">
-                        Features
-                    </button>
-
-                    <ul class="footer-menu">
-                        <li><a href="#">Featured Products</a></li>
-                        <li><a href="#">On Sale</a></li>
-                        <li><a href="#">Shop by Category</a></li>
-                        <li><a href="#">New Arrivals</a></li>
-                    </ul>
-
-                </div>
-
-                <div class="footer-column">
-
-                    <button class="footer-toggle" type="button">
-                        Learn More
-                    </button>
-
-                    <ul class="footer-menu">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Craftsmanship</a></li>
-                        <li><a href="#">Materials & Care</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
-
-                </div>
-
-                <div class="footer-column">
-                    
-                    <button class="footer-toggle" type="button">
-                        Support
-                    </button>
-
-                    <ul class="footer-menu">
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Shipping & Delivery</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                    
-                </div>
-
-            </div>
-
+            </nav>
         </div>
-
     </footer>
     
     <script src="js/data.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/index.js"></script>
     <script src="js/users.js"></script>
     <script>
         function loginUser() {
