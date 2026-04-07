@@ -4,12 +4,9 @@ const addProductLink = document.querySelector("#add-product-link");
 const loginLink = document.querySelector("#login-link");
 
 const user = JSON.parse(localStorage.getItem("loggedInUser"));
-console.log("loggedInUser:", user);
-console.log("user type:", user.type);
-console.log("addProductLink:", addProductLink);
+
 if (addProductLink) addProductLink.classList.add("hidden");
-console.log("before logic:", addProductLink?.className);
-console.log("user at nav:", user);
+
 
 if (!user) 
   {
