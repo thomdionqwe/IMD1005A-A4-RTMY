@@ -1,36 +1,3 @@
-console.log("navigation.js loaded");
-/* add prodcut icon logic  */
-const addProductLink = document.querySelector("#add-product-link");
-const loginLink = document.querySelector("#login-link");
-
-const user = JSON.parse(localStorage.getItem("loggedInUser"));
-
-if (addProductLink) addProductLink.classList.add("hidden");
-
-
-if (!user) 
-  {
-    // NOT logged in
-    if (loginLink) loginLink.classList.remove("hidden");
-    if (addProductLink) addProductLink.classList.add("hidden");
-
-} 
-else 
-{
-    // logged in → hide login
-    if (loginLink) loginLink.classList.add("hidden");
-
-    // show add product ONLY if business
-  if (user.type === "business") {
-      if (addProductLink) {
-          addProductLink.classList.remove("hidden");
-          console.log("after business logic:", addProductLink.className);
-      }
-  } else {
-      if (addProductLink) addProductLink.classList.add("hidden");
-  }
-
-}
 
 /* -------------------------------------------------------------- */
 /*                      mobile behaviour                          */
