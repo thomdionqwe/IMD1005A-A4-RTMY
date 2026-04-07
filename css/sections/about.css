@@ -1,0 +1,197 @@
+/* --------------------------------- about us sections --------------------------------- */
+
+/*  so far the sections in main don't belong in one structure
+    i would like to add them later to a flex box 
+    so that i can use gap instead of playing with the margins
+*/
+.about 
+{
+
+    margin-top: 1000px;  /* wanna create space with the above section*/
+}
+
+/*
+    the card layout 
+*/
+/* .about-container : has 2 flex items 
+    1- about-content ( about-title / about-text / about-btn )
+    2- about-image 
+    */
+.about-container 
+{
+    max-width: var(--container-min);
+    margin: 0 auto;
+
+    padding: 0 0 0 var(--space-2xl);
+
+    background-color: var(--color-surface);
+    border-radius: var(--radius-3xl);
+
+    display: flex;
+    gap: var(--space-2xl);
+    align-items: stretch;
+}
+/* ------------------------------------------------*/
+/* 1- about-content */
+.about-content 
+{
+    flex: 1;
+    padding: var(--space-3xl) 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    align-items: center;
+    row-gap: var(--space-lg);
+
+    text-align: center;
+}
+
+.about-title 
+{
+    font-family: var(--font-logo);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-md);
+
+    text-decoration: none;
+    letter-spacing: -3px;
+    color: var(--color-text-primary);
+    display : inline-block;
+}
+
+.about-text 
+{
+    max-width: 52ch;
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
+.about-btn 
+{
+    padding: var(--space-sm) var(--space-lg);
+
+    font-family: var(--font-thin);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.05em;
+
+    color: var(--color-text);
+    background-color: var(--color-surface-alt);
+
+    border: none;
+    border-radius: var(--radius-pill);
+
+    cursor: pointer;
+    transition: var(--transition-fast);
+
+    padding: var(--space-sm) var(--space-3xl);
+}
+
+.about-btn:hover 
+{
+    background-color: var(--color-primary-alt);
+    color: rgb(255, 255, 255);
+}
+
+
+
+/* ------------------------------------------------*/
+/* 2- about-image */
+.about-image 
+{
+    flex: 0 0 38%;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.about-image img 
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--radius-2xl);
+
+    transition: transform var(--transition-base);
+}
+
+
+/* -----------------------------------------------------------------*/
+/* break points  :           tablet                                 */
+/* -----------------------------------------------------------------*/
+@media screen and (min-width: 768px) and (max-width: 1023px) 
+{
+
+    .about-container 
+    {
+        gap: var(--space-xl);
+    }
+
+    .about-image 
+    {
+        flex: 0 0 38%;
+        overflow: hidden;
+        border-radius: var(--radius-2xl);
+
+    }
+
+    .about-image img 
+    {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .about-content 
+    {
+        padding: var(--space-3xl) 0;
+        gap: var(--space-2xl);
+    }
+
+    .about-text 
+    {
+        max-width: 38ch;
+    }
+}
+
+/* -----------------------------------------------------------------*/
+/* break points  :           mobile                                 */
+/* -----------------------------------------------------------------*/
+
+@media screen and (max-width: 767px) {
+    .about-container 
+    {
+        flex-direction: column;
+        padding: 0;
+        gap: 0;
+    }
+
+    .about-image 
+    {
+        order: 1;
+        width: 100%;
+        flex: none;
+        height: 220px;
+        overflow: hidden;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+
+    .about-content 
+    {
+        order: 2;
+        width: 100%;
+        padding: var(--space-2xl) var(--space-lg);
+    }
+
+    .about-image img 
+    {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+}

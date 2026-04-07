@@ -100,7 +100,11 @@
             <!-- nav third child  : nav-right    -->
             <!-- ------------------------------- -->
             <div class="nav-right">
-                <a href="login.html" class="nav-icon-link" aria-label="Wishlist">
+                <a href="addProduct.html" id="add-product-link" class="nav-icon-link" aria-label="add product">
+                    <img src="images/ui/icons/icon-plus.svg" alt="" class="icon">
+                </a>
+
+                <a href="login.html" id="login-link" class="nav-icon-link" aria-label="login">
                     <img src="images/ui/icons/icon-user.svg" alt="" class="icon">
                 </a>
                 <a href="favorites.html" class="nav-icon-link" aria-label="Wishlist">
@@ -294,7 +298,6 @@
 
     <main class="site-main">
 
-        <h1 id="Test"></h1>
 
 
         <!-- <section class="home-featured">
@@ -310,17 +313,126 @@
             <div id="productGrid" class="product-grid"></div>
         </section>
 
+        <!--  about us section : -->
+        <section> 
+            <div class="about-container">
 
+                <!-- LEFT CONTENT -->
+                <div class="about-content">
+                    <h2 class="about-title">
+                        Carve&Co.
+                    </h2>
+
+                    <p class="about-text">
+                        Carve & Co. is a small 
+                        collective of skilled carpenters dedicated to 
+                        esigning and crafting high-quality wooden pieces 
+                        for the modern home. Each product is thoughtfully 
+                        made with attention to detail, combining traditional 
+                        woodworking techniques with clean, contemporary design.
+                    </p>
+
+                    <button class="about-btn">
+                        LEARN MORE
+                    </button>
+
+                </div>
+
+                <!-- RIGHT IMAGE -->
+                <div class="about-image">
+                    <img src="images/about-us/about-us.jpg" alt="Carpenter working with wood">
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
     <footer class="site-footer">
-        <div class="container">
-            <nav>
 
-            </nav>
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h2 class="footer-logo">
+                    Carve&Co.
+                </h2>
+
+                <p class="footer-description">
+                    Crafted wooden décor designed to bring warmth, 
+                    character into every home.
+                </p>
+
+                <div class="footer-socials">
+
+                    <a href="#" aria-label="Visit our first social media page">
+                        <img src="images/ui/icons/icon-social-link-1.svg" alt="">
+                    </a>
+                    <a href="#" aria-label="Visit our second social media page">
+                        <img src="images/ui/icons/icon-social-link-2.svg" alt="">
+                    </a>
+                    <a href="#" aria-label="Visit our third social media page">
+                        <img src="images/ui/icons/icon-social-link-3.svg" alt="">
+                    </a>
+
+                </div>
+
+
+            </div>
+
+            <div class="footer-links">
+
+                <div class="footer-column">
+
+                    <button class="footer-toggle" type="button">
+                        Features
+                    </button>
+
+                    <ul class="footer-menu">
+                        <li><a href="#">Featured Products</a></li>
+                        <li><a href="#">On Sale</a></li>
+                        <li><a href="#">Shop by Category</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <button class="footer-toggle" type="button">
+                        Learn More
+                    </button>
+
+                    <ul class="footer-menu">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Craftsmanship</a></li>
+                        <li><a href="#">Materials & Care</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="footer-column">
+                    
+                    <button class="footer-toggle" type="button">
+                        Support
+                    </button>
+
+                    <ul class="footer-menu">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+
         </div>
+
     </footer>
+
     <script src="js/data.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>

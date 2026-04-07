@@ -1,3 +1,8 @@
+.hidden 
+{
+    display: none;
+}
+
 
 /* ------------------------ header --------------------------- */
 
@@ -149,11 +154,11 @@
 }
 
 .nav-icon-link 
-{  /* i want the icon area to be bigger for clicking*/
-    display: flex;
+{
+    display: inline-flex;   
     align-items: center;
     justify-content: center;
-    position: relative;  /*to make the badge on top of it*/
+    position: relative;
     width: 35px;
     height: 35px;
 }
@@ -255,3 +260,4 @@
 .site-nav {
   width: 100%;
 }
+

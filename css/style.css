@@ -9,11 +9,11 @@
 @import url("./nav/nav_feature.css");
 @import url("./nav/nav_deals.css");
 @import url("./nav/nav_services.css");
-
 @import url("./nav/nav_search.css");
-
 @import url("./nav/nav_tablet.css");
 @import url("./nav/nav_mobile.css");
 
+@import url("./sections/about.css");
+@import url("./sections/footer.css");
 
 @import url("./pages.css");
