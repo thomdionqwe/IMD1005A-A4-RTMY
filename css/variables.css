@@ -5,6 +5,7 @@
   --color-text-primary: #4d4d4d;
   --color-text-secondary: #5f5f5f;
   --color-text-light: #afafaf;
+  --color-text-extra-light: #c9c9c9;
 
 
   --color-bg: #f7f4f1;
@@ -18,7 +19,7 @@
 
   --color-primary: #dd7b30;
   --color-primary-alt: #bea794;
-  --color-primary-hover: s#734d31;
+  --color-primary-hover: #734d31;
   --color-secondary: #d8c2a8;
   --color-accent: #608b61;
   --color-accent-alt: #cddfcd;
@@ -41,7 +42,7 @@
   --fs-xl: 2rem;      /* 32px */
   --fs-2xl: 2.5rem;   /* 40px */
   --fs-3xl: 3rem;     /* 48px */
-
+  --fs-4xl: 4rem; 
 
   --fw-thin: 100;
   --fw-regular: 400;
@@ -65,6 +66,8 @@
   --radius-md: 0.5rem;   /* 8px */
   --radius-lg: 0.75rem;  /* 12px */
   --radius-xl: 1rem;     /* 16px */
+  --radius-2xl: 2rem;
+  --radius-3xl: 3rem;
   --radius-pill: 999px;
 
   /* Shadows */
@@ -74,6 +77,7 @@
 
   /* Layout */
   --container-max: 1500px;
+  --container-min: 1000px;
   --header-height: 80px;
 
   /* Transitions */

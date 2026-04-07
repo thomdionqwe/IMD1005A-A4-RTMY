@@ -1,11 +1,12 @@
-
 /*testing delete later:  populating the prodcut list  */
 ///////////
 const productList = document.querySelector(".product-list");
 
-const featuredProducts = products.filter(product => product.featured);
+const featuredProducts = JSON.parse(localStorage.getItem("products")).filter(
+  (product) => product.featured,
+);
 
-featuredProducts.forEach(product => {
+featuredProducts.forEach((product) => {
   const card = document.createElement("div");
 
   const img = document.createElement("img");
@@ -26,3 +27,4 @@ featuredProducts.forEach(product => {
 });
 /////////
 /*testing delete later:  populating the prodcut list  */
+console.log(JSON.parse(localStorage.getItem("products")));
