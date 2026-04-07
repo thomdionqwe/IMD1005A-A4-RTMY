@@ -1,4 +1,3 @@
-
 /* -------------------------------------------------------------- */
 /*                      mobile behaviour                          */
 /* -------------------------------------------------------------- */
@@ -9,28 +8,12 @@ const hamburgerBtn = document.querySelector(".hamburger-btn");
 const mobileMenu = document.querySelector(".mobile-menu");
 const mobileCloseBtn = document.querySelector(".mobile-close-btn");
 /* --------------------------------------------------------------   */
-
-
-/* helper functions to make the menus sticky  */
-function disableScroll() 
-{
-  document.body.style.overflow = "hidden";
-}
-
-function enableScroll() 
-{
-  document.body.style.overflow = "";
-}
-
-
 /* helper functions  openMobileMenu() : 
   shows the mobile menu and the overlay 
 */
-function openMobileMenu() 
-{
+function openMobileMenu() {
   if (!mobileMenu || !hamburgerBtn || !navOverlay) return;
 
-  disableScroll();
   mobileMenu.classList.add("is-open");
   navOverlay.classList.add("is-open");
   hamburgerBtn.setAttribute("aria-expanded", "true");
@@ -39,32 +22,25 @@ function openMobileMenu()
 /* helper functions  closeMobileMenu(): 
   closes the mobile menu and the overlay 
 */
-function closeMobileMenu() 
-{
+function closeMobileMenu() {
   if (!mobileMenu || !hamburgerBtn || !navOverlay) return;
 
-  enableScroll();
   mobileMenu.classList.remove("is-open");
   navOverlay.classList.remove("is-open");
   hamburgerBtn.setAttribute("aria-expanded", "false");
 }
 
-
 /* if the hamburger btn clicked : open  */
-if (hamburgerBtn) 
-{
-  hamburgerBtn.addEventListener("click", function () 
-  {
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener("click", function () {
     closeAllDesktopPanels();
     openMobileMenu();
   });
 }
 
 /* if the X btn clicked : close  */
-if (mobileCloseBtn) 
-{
-  mobileCloseBtn.addEventListener("click", function () 
-  {
+if (mobileCloseBtn) {
+  mobileCloseBtn.addEventListener("click", function () {
     closeMobileMenu();
   });
 }
@@ -88,10 +64,8 @@ const desktopNavButtons = [shopBtn, featuredBtn, dealsBtn];
 
 /*  accessibility  */
 /* to traverse the button with left and right arow  */
-desktopNavButtons.forEach((button, index) =>
-{
-  button.addEventListener("keydown", function (event) 
-  {
+desktopNavButtons.forEach((button, index) => {
+  button.addEventListener("keydown", function (event) {
     let nextIndex = null;
 
     if (event.key === "ArrowRight") {
@@ -161,7 +135,7 @@ featuredBtn.addEventListener("click", function () {
 });
 
 /* ----  */
-/*  a deals button click open the deals panel and closes any other panel  */
+/*  a featured button click open the featured panel and closes any other panel  */
 dealsBtn.addEventListener("click", function () {
   const isOpen = dealsPanel.classList.contains("is-open");
 
@@ -178,14 +152,12 @@ dealsBtn.addEventListener("click", function () {
 
 /* helper hunctions :   */
 function openDesktopPanel(panel, button) {
-  disableScroll();
   panel.classList.add("is-open");
   button.setAttribute("aria-expanded", "true");
   navOverlay.classList.add("is-open");
 }
 
 function closeDesktopPanel(panel, button) {
-  enableScroll();
   panel.classList.remove("is-open");
   button.setAttribute("aria-expanded", "false");
 }
@@ -200,7 +172,6 @@ function closeAllDesktopPanels() {
   dealsBtn.setAttribute("aria-expanded", "false");
 
   navOverlay.classList.remove("is-open");
-  enableScroll();
 }
 
 /* ----  */
@@ -794,5 +765,3 @@ if (badge) {
   badge.textContent = count;
   badge.style.display = count > 0 ? "flex" : "none";
 }
-
-
