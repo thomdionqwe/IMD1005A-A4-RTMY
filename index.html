@@ -315,7 +315,7 @@
 
 
         <!--  about us section : -->
-        <section> 
+        <section>
             <div class="about-container">
 
                 <!-- LEFT CONTENT -->
@@ -325,11 +325,11 @@
                     </h2>
 
                     <p class="about-text">
-                        Carve & Co. is a small 
-                        collective of skilled carpenters dedicated to 
-                        esigning and crafting high-quality wooden pieces 
-                        for the modern home. Each product is thoughtfully 
-                        made with attention to detail, combining traditional 
+                        Carve & Co. is a small
+                        collective of skilled carpenters dedicated to
+                        esigning and crafting high-quality wooden pieces
+                        for the modern home. Each product is thoughtfully
+                        made with attention to detail, combining traditional
                         woodworking techniques with clean, contemporary design.
                     </p>
 
@@ -349,7 +349,7 @@
 
     </main>
 
-<footer class="site-footer">
+    <footer class="site-footer">
 
         <div class="footer-container">
 
@@ -360,7 +360,7 @@
                 </h2>
 
                 <p class="footer-description">
-                    Crafted wooden décor designed to bring warmth, 
+                    Crafted wooden décor designed to bring warmth,
                     character into every home.
                 </p>
 
@@ -414,7 +414,7 @@
                 </div>
 
                 <div class="footer-column">
-                    
+
                     <button class="footer-toggle" type="button">
                         Support
                     </button>
@@ -425,7 +425,7 @@
                         <li><a href="#">Returns</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
-                    
+
                 </div>
 
             </div>
@@ -436,12 +436,12 @@
 
     <script src="js/data.js"></script>
     <script src="js/navigation.js"></script>
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
     <script src="js/index.js"></script>
     <script src="js/users.js"></script>
     <!-- <script src="js/cart.js"></script> -->
     <script>
-        const user = JSON.parse(localStorage.getItem("loggedInUser"));
+        // console.log("loggedInUser:", JSON.parse(localStorage.getItem("loggedInUser")));
         const users = JSON.parse(localStorage.getItem("users"));
         const userId = parseInt(localStorage.getItem("loggedInUserId"), 10);
         function updateCartBadge() {
