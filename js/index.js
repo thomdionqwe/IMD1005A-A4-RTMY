@@ -89,4 +89,4 @@ function loadProductsByMainCategories() {
 
 loadProductsByMainCategories();
 
-console.log(JSON.parse(localStorage.getItem("products")));
+// console.log(JSON.parse(localStorage.getItem("products")));

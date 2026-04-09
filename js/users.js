@@ -33,4 +33,4 @@ function ensureDefaultUsers() {
 
 // Run this on every page load
 ensureDefaultUsers();
-console.log(JSON.parse(localStorage.getItem("users")));
+//console.log(JSON.parse(localStorage.getItem("users")));
