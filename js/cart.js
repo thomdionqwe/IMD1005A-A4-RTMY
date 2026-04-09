@@ -38,7 +38,24 @@ function removeFromCart(productId) {
   localStorage.setItem("cart", JSON.stringify(cart));
   saveCartCount();
   loadCart(); // refresh
+  updateCartBadge();
 }
+
+// function removeFromCart(productId) {
+//   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+//   // find the index of the FIRST matching item
+//   const index = cart.findIndex((item) => item.id === productId);
+
+//   if (index !== -1) {
+//     cart.splice(index, 1); // remove only ONE item
+//   }
+
+//   localStorage.setItem("cart", JSON.stringify(cart));
+//   saveCartCount();
+//   loadCart(); // refresh
+//   updateCartBadge(); // refresh navbar badge
+// }
 
 function getProductById(id) {
   const products = JSON.parse(localStorage.getItem("products")) || [];

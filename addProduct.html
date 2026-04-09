@@ -100,9 +100,16 @@
             <!-- nav third child  : nav-right    -->
             <!-- ------------------------------- -->
             <div class="nav-right">
+                <a href="addProduct.html" id="add-product-link" class="nav-icon-link" aria-label="add product">
+                    <img src="images/ui/icons/icon-plus.svg" alt="" class="icon">
+                </a>
                 <a href="login.html" class="nav-icon-link" aria-label="Wishlist">
                     <img src="images/ui/icons/icon-user.svg" alt="" class="icon">
                 </a>
+                <a href="#" id="logoutBtn" class="nav-icon-link" aria-label="Logout" style="display:none;">
+                    <img src="images/ui/icons/icon-logout.svg" alt="" class="icon">
+                </a>
+
                 <a href="favorites.html" class="nav-icon-link" aria-label="Wishlist">
                     <img src="images/ui/icons/icon-heart.svg" alt="" class="icon">
                 </a>
@@ -293,7 +300,7 @@
     </header>
 
 
-    <main class="site-main">
+    <main class="site-main" style="padding-top: 50px;">
         <form class="form-box" onsubmit="event.preventDefault(); addProduct();">
             <h2>Add New Product</h2>
 
@@ -394,6 +401,8 @@
     <script src="js/main.js"></script>
     <script src="js/users.js"></script>
     <script src="js/crudProduct.js"></script>
+    <script src="js/logout_auth.js"></script>
+    <script src="js/loginRedirect.js"></script>
     <script>
         console.log(JSON.parse(localStorage.getItem("products")));
     </script>
