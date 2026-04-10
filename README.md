@@ -21,8 +21,8 @@ https://thomdionqwe.github.io/IMD1005A-A4-RTMY/
 
 ### Yousra
 
-- **Carleton Student Number:**
-- **Algonquin Student Number:**
+- **Carleton Student Number:** 101392056
+- **Algonquin Student Number: 
 
 ---
 
@@ -56,7 +56,53 @@ I contributed extensively to the core functionality and interactive features of 
 - Added smooth validation feedback and user interaction flows
 - Ensured consistent behavior and data handling across all pages
 
-### Yousra
+### Yousra Albizri
+
+I contributed to both the design and frontend development of this project, focusing on building a responsive, interactive, and scalable user interface.
+
+Design & Planning
+- Created full website mockups in Figma [View My Figma Design](https://www.figma.com/site/JubD8JJx1OtTsYKr3xao9I/website-mockup?node-id=0-1&t=4sHSwn5uBAugLYM4-1) and used them as the main reference for implementation
+- Took inspiration from modern e-commerce platforms like IKEA
+- Focused on clean layout, visual hierarchy, and product-centered design
+
+Navigation System
+- Built a fully responsive navigation system:
+- Desktop: interactive panels (Shop, Featured, Deals)
+- Tablet: sliding drawer menu
+- Mobile: simplified full-screen navigation 
+- Implemented filtering UI (tags, featured, on-sale products)
+- Added search dropdown, overlay system, and UI state management
+- Integrated accessibility (keyboard navigation, ARIA, focus handling)
+
+Product Data & Rendering
+- Designed structured product system (data.js)
+- Defined consistent product schema (id, category, tags, price, images, etc.)
+- Implemented dynamic rendering using DOM methods
+
+UI Components & Layout
+- Built responsive About section and multi-column footer
+- Structured CSS using modular files and variables
+- Added UI interactions (hover effects, transitions, overlays)
+
+User-Based Features
+- Implemented conditional UI:
+- Show “Add Product” for business users
+- Hide login when user is authenticated
+- Managed user state using localStorage
+  
+Assets & Content
+- Sourced, organized, and integrated all visual assets
+- Maintained consistent folder structure and naming conventions
+- Generated placeholder product descriptions, titles, and tags
+
+Workflow & Collaboration
+- Worked across multiple feature branches
+- Created and merged pull requests into main
+- Maintained clear commits and coordinated with the team
+
+AI Usage
+- Refactoring repetitive CSS
+- All AI-assisted code was reviewed, understood, and clearly commented
 
 ### Thomas Dion
 
