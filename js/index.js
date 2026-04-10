@@ -100,4 +100,215 @@ function showWelcomeUser() {
 
 showWelcomeUser();
 
+function getRandomItem(items) {
+  if (!Array.isArray(items) || items.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * items.length);
+  return items[randomIndex];
+}
+
+function renderHeroProductCard(product, slotId, options = {}) {
+  const slot = document.getElementById(slotId);
+  if (!slot) return;
+
+  if (!product) {
+    slot.innerHTML = `
+      <div class="hero-card-preview">
+        <div class="hero-card-preview-body">
+          <h3>No product available</h3>
+          <p>Please add matching products to see this hero card.</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const {
+    showSaleBadge = false,
+    cardAltPrefix = "Product",
+  } = options;
+
+  const safeDimensions = product.dimensions || "Dimensions not available";
+  const productPrice =
+    typeof product.price === "number" ? `$${product.price.toFixed(2)}` : "";
+
+  slot.innerHTML = `
+    <div class="hero-card-preview">
+      <div class="hero-card-preview-image hero-card-preview-badge-wrap">
+        ${
+          showSaleBadge
+            ? `<img src="images/ui/icons/sale.png" alt="" class="hero-card-sale-badge">`
+            : ""
+        }
+        <img src="${product.thumbnailImage}" alt="${cardAltPrefix}: ${product.name}">
+      </div>
+
+      <div class="hero-card-preview-body">
+        <h3>${product.name}</h3>
+        <p>${productPrice}</p>
+        <p>${safeDimensions}</p>
+      </div>
+    </div>
+  `;
+}
+
+function populateHeroProductSlides() {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+
+  const dealProducts = products.filter((product) => {
+    return product.onSale === true || product.sale === true;
+  });
+
+  const featuredProducts = products.filter((product) => {
+    return product.featured === true;
+  });
+
+  const randomDealProduct = getRandomItem(dealProducts);
+  const randomFeaturedProduct = getRandomItem(featuredProducts);
+
+  renderHeroProductCard(randomDealProduct, "heroDealSlot", {
+    showSaleBadge: true,
+    cardAltPrefix: "Deal item",
+  });
+
+  renderHeroProductCard(randomFeaturedProduct, "heroTrendingSlot", {
+    showSaleBadge: false,
+    cardAltPrefix: "Trending item",
+  });
+}
+
+populateHeroProductSlides();
+
+function initHeroCarousel() {
+  const hero = document.querySelector(".home-hero");
+  const slides = document.getElementById("heroSlides");
+  const prevBtn = document.getElementById("heroPrevBtn");
+  const nextBtn = document.getElementById("heroNextBtn");
+  const dots = document.querySelectorAll(".hero-dot");
+
+  if (!hero || !slides || !prevBtn || !nextBtn || dots.length === 0) return;
+
+  let currentSlide = 0;
+  const totalSlides = dots.length;
+  const autoplayDelay = 5000;
+  let autoplayInterval = null;
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+  const swipeThreshold = 50;
+  const verticalTolerance = 80;
+
+  function updateHeroCarousel() {
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === currentSlide);
+    });
+  }
+
+  function goToSlide(index) {
+    currentSlide = (index + totalSlides) % totalSlides;
+    updateHeroCarousel();
+  }
+
+  function goToNextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function goToPrevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  function stopAutoplay() {
+    if (autoplayInterval !== null) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      goToNextSlide();
+    }, autoplayDelay);
+  }
+
+  function resetAutoplay() {
+    startAutoplay();
+  }
+
+  function handleSwipeGesture() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaX) < swipeThreshold) return;
+    if (Math.abs(deltaY) > verticalTolerance) return;
+
+    if (deltaX < 0) {
+      goToNextSlide();
+      resetAutoplay();
+    } else {
+      goToPrevSlide();
+      resetAutoplay();
+    }
+  }
+
+  prevBtn.addEventListener("click", () => {
+    goToPrevSlide();
+    resetAutoplay();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    goToNextSlide();
+    resetAutoplay();
+  });
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const slideIndex = parseInt(dot.dataset.slide, 10);
+      goToSlide(slideIndex);
+      resetAutoplay();
+    });
+  });
+
+  hero.addEventListener(
+    "touchstart",
+    (event) => {
+      const firstTouch = event.changedTouches[0];
+      touchStartX = firstTouch.clientX;
+      touchStartY = firstTouch.clientY;
+      touchEndX = firstTouch.clientX;
+      touchEndY = firstTouch.clientY;
+    },
+    { passive: true }
+  );
+
+  hero.addEventListener(
+    "touchmove",
+    (event) => {
+      const touch = event.changedTouches[0];
+      touchEndX = touch.clientX;
+      touchEndY = touch.clientY;
+    },
+    { passive: true }
+  );
+
+  hero.addEventListener(
+    "touchend",
+    (event) => {
+      const lastTouch = event.changedTouches[0];
+      touchEndX = lastTouch.clientX;
+      touchEndY = lastTouch.clientY;
+      handleSwipeGesture();
+    },
+    { passive: true }
+  );
+
+  updateHeroCarousel();
+  startAutoplay();
+}
+
+initHeroCarousel();
+
 // console.log(JSON.parse(localStorage.getItem("products")));
