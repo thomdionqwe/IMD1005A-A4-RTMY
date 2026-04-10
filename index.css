@@ -11,6 +11,7 @@ main {
   margin-bottom: 24px;
   border-radius: 18px;
   background: #f5f1ea;
+  touch-action: pan-y;
 }
 
 .home-hero-track {

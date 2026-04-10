@@ -179,17 +179,25 @@ function populateHeroProductSlides() {
 populateHeroProductSlides();
 
 function initHeroCarousel() {
+  const hero = document.querySelector(".home-hero");
   const slides = document.getElementById("heroSlides");
   const prevBtn = document.getElementById("heroPrevBtn");
   const nextBtn = document.getElementById("heroNextBtn");
   const dots = document.querySelectorAll(".hero-dot");
 
-  if (!slides || !prevBtn || !nextBtn || dots.length === 0) return;
+  if (!hero || !slides || !prevBtn || !nextBtn || dots.length === 0) return;
 
   let currentSlide = 0;
   const totalSlides = dots.length;
   const autoplayDelay = 5000;
   let autoplayInterval = null;
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+  const swipeThreshold = 50;
+  const verticalTolerance = 80;
 
   function updateHeroCarousel() {
     slides.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -212,13 +220,6 @@ function initHeroCarousel() {
     goToSlide(currentSlide - 1);
   }
 
-  function startAutoplay() {
-    stopAutoplay();
-    autoplayInterval = setInterval(() => {
-      goToNextSlide();
-    }, autoplayDelay);
-  }
-
   function stopAutoplay() {
     if (autoplayInterval !== null) {
       clearInterval(autoplayInterval);
@@ -226,8 +227,31 @@ function initHeroCarousel() {
     }
   }
 
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      goToNextSlide();
+    }, autoplayDelay);
+  }
+
   function resetAutoplay() {
     startAutoplay();
+  }
+
+  function handleSwipeGesture() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaX) < swipeThreshold) return;
+    if (Math.abs(deltaY) > verticalTolerance) return;
+
+    if (deltaX < 0) {
+      goToNextSlide();
+      resetAutoplay();
+    } else {
+      goToPrevSlide();
+      resetAutoplay();
+    }
   }
 
   prevBtn.addEventListener("click", () => {
@@ -247,6 +271,39 @@ function initHeroCarousel() {
       resetAutoplay();
     });
   });
+
+  hero.addEventListener(
+    "touchstart",
+    (event) => {
+      const firstTouch = event.changedTouches[0];
+      touchStartX = firstTouch.clientX;
+      touchStartY = firstTouch.clientY;
+      touchEndX = firstTouch.clientX;
+      touchEndY = firstTouch.clientY;
+    },
+    { passive: true }
+  );
+
+  hero.addEventListener(
+    "touchmove",
+    (event) => {
+      const touch = event.changedTouches[0];
+      touchEndX = touch.clientX;
+      touchEndY = touch.clientY;
+    },
+    { passive: true }
+  );
+
+  hero.addEventListener(
+    "touchend",
+    (event) => {
+      const lastTouch = event.changedTouches[0];
+      touchEndX = lastTouch.clientX;
+      touchEndY = lastTouch.clientY;
+      handleSwipeGesture();
+    },
+    { passive: true }
+  );
 
   updateHeroCarousel();
   startAutoplay();
