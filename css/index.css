@@ -77,19 +77,19 @@ main {
 }
 
 .hero-slide--mission .hero-slide-title {
-  color: #f4eee6; 
+  color: #f4eee6;
 }
 
 .hero-slide--deals .hero-slide-title {
-  color: #ffffff; 
+  color: #ffffff;
 }
 
 .hero-slide--trending .hero-slide-title {
-  color: #111; 
+  color: #111;
 }
 
 .hero-slide--signup .hero-slide-title {
-  color: #111; 
+  color: #111;
 }
 
 /*content layer*/
@@ -173,7 +173,7 @@ main {
   line-height: 1.6;
   color: #f4eee6;
   max-width: 60ch;
-  background: rgba(51, 51, 51, 0.6);;
+  background: rgba(51, 51, 51, 0.6);
   padding: 1rem 1.1rem;
   border-radius: 12px;
 }
@@ -291,7 +291,9 @@ main {
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 500;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .hero-slide-btn:hover {
@@ -315,7 +317,9 @@ main {
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   z-index: 3;
-  transition: transform 0.25s ease, background 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
   padding: 0;
 }
 
@@ -361,7 +365,9 @@ main {
   background: rgba(17, 17, 17, 0.3);
   cursor: pointer;
   padding: 0;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .hero-dot.is-active {
@@ -582,4 +588,17 @@ main {
   .product-price {
     font-size: 18px;
   }
+}
+
+.filter-box {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.search-input {
+  width: 60%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
 }
