@@ -87,7 +87,7 @@ function loadProductsByMainCategories() {
   });
 }
 
-// loadProductsByMainCategories();
+loadProductsByMainCategories();
 
 function showWelcomeUser() {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -122,7 +122,10 @@ function renderHeroProductCard(product, slotId, options = {}) {
     return;
   }
 
-  const { showSaleBadge = false, cardAltPrefix = "Product" } = options;
+  const {
+    showSaleBadge = false,
+    cardAltPrefix = "Product",
+  } = options;
 
   const safeDimensions = product.dimensions || "Dimensions not available";
   const productPrice =
@@ -278,7 +281,7 @@ function initHeroCarousel() {
       touchEndX = firstTouch.clientX;
       touchEndY = firstTouch.clientY;
     },
-    { passive: true },
+    { passive: true }
   );
 
   hero.addEventListener(
@@ -288,7 +291,7 @@ function initHeroCarousel() {
       touchEndX = touch.clientX;
       touchEndY = touch.clientY;
     },
-    { passive: true },
+    { passive: true }
   );
 
   hero.addEventListener(
@@ -299,7 +302,7 @@ function initHeroCarousel() {
       touchEndY = lastTouch.clientY;
       handleSwipeGesture();
     },
-    { passive: true },
+    { passive: true }
   );
 
   updateHeroCarousel();

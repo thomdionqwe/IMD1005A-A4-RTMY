@@ -1,35 +1,330 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carve & Co. | Contact</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carve&amp;Co. | Contact</title>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/contact.css">
+  </head>
 
-<body>
+  <body>
     <header class="site-header">
-        <div class="container">
-            <nav>
+        <!-- ***  the navigation parent container *** -->
+        <!-- ---------------------------------------  -->
+        <!-- the nav container has 3 children  
+             1- left div for the logo and navigation links on the the left 
+             2- middle div for a search bar in the middle of nav
+             3- right div for more links -wishlist- & -cart-  -->
+        <nav class="site-nav">
 
-            </nav>
+
+            <!-- ------------------------------- -->
+            <!-- nav first child  : nav-left -->
+            <!-- --------------------------- -->
+            <!-- it has 2 children 
+                1- the logo/wordmark: works as a link to home page
+                2- unordered list with 4 list item 
+                   each list item is a button that will summon their own menu-->
+            <div class="nav-left">
+                <!-- logo replacement for now -->
+                <a href="index.html" class="nav-logo">Carve&amp;Co.</a>
+
+                <ul class="nav-links">
+
+                    <li>
+                        <button class="nav-btn" id="shop-btn" type="button" aria-expanded="false"
+                            aria-controls="shop-panel">
+                            Shop
+                        </button>
+                    </li>
+
+                    <li>
+                        <button class="nav-btn" id="featured-btn" type="button" aria-expanded="false"
+                            aria-controls="featured-panel">
+                            Featured
+                        </button>
+                    </li>
+
+                    <li>
+                        <button class="nav-btn" id="deals-btn" type="button" aria-expanded="false"
+                            aria-controls="deals-panel">
+                            Deals
+                        </button>
+                    </li>
+                    <!-- <li><button class="nav-btn">Services</button></li> -->
+                </ul>
+            </div>
+
+            <!-- ------------------------------- -->
+            <!-- nav second child  : nav-search  -->
+            <!-- ------------------------------- -->
+            <!-- a form element with one input and one submit button 
+                1- the input element : is for typing search words
+                2- the button is to do the search 
+            -->
+            <div class="nav-search">
+                <form class="search-form" action="#" role="search">
+                    <label for="site-search" class="sr-only">Search Carve &amp; Co.</label>
+
+                    <button type="submit" class="search-submit-btn" aria-label="Submit search">
+                        <img src="images/ui/icons/icon-search.svg" alt="" class="icon">
+                    </button>
+
+                    <input type="search" id="site-search" name="site-search" class="search-input"
+                        placeholder="Search Carve &amp; Co." autocomplete="off">
+                </form>
+                <!--  most common search -->
+                <!--  
+                        for demo purposese only they are hard coded 
+                        in the future : 
+                        1- populate a common seaches list 
+                        2- populate a recent searches list 
+                  
+                -->
+                <div class="search-dropdown" id="search-dropdown" hidden>
+                    <p class="search-dropdown-title">Common searches</p>
+
+                    <div class="search-common-list">
+                        <a href="#" class="search-suggestion-link">coffee table</a>
+                        <a href="#" class="search-suggestion-link">floating shelf</a>
+                        <a href="#" class="search-suggestion-link">wood decor</a>
+                        <a href="#" class="search-suggestion-link">storage</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ------------------------------- -->
+            <!-- nav third child  : nav-right    -->
+            <!-- ------------------------------- -->
+
+
+            <!-- end of nav -->
+            <!-- ---------------------------------------  -->
+        </nav>
+
+        <!-- the overlay will always dispaly under the nave special panels -->
+        <div class="nav-overlay" id="nav-overlay">
+            <!-- will be activated when the nav menue panel drop -->
         </div>
+
+        <!--  ----------------------------------------------------------------------- -->
+        <!--  ------------------ desktop breakpoint specific ------------------------ -->
+        <!--  ----------------------------------------------------------------------- -->
+
+
+        <!-- ---------------------------------------------------------------------->
+        <!--                         nav-links panels                            -->
+        <!-- ---------------------------------------------------------------------->
+
+        <!--****      -------------         ****-->
+        <!--****       shop panel           ****-->
+        <!--****      -------------         ****-->
+        <!-- a menu drops when the user click the shop button the menu has two options :
+            1- shop all : to go to a separate page with all the products
+            2- shop by category : it displays the 3 categoies swe currently have
+                shop by category is a future feature the buttons dont take the user anywhere 
+                but in the future the will take the user to a shop page with a category filter 
+        -->
+        <section class="shop-panel" id="shop-panel">
+            <div class="shop-panel-inner">
+
+                <a href="products.html?filter=all" class="shop-all-link">Shop all</a>
+
+                <div class="shop-categories">
+                    <button type="button" class="shop-category-card">
+
+                        <div class="shop-category-image-wrapper">
+                            <img src="images/categories/shelves.webp" alt="Wood shelves category"
+                                class="shop-category-image">
+                        </div>
+                        <span class="shop-category-label">Shelves</span>
+
+                    </button>
+
+                    <button type="button" class="shop-category-card">
+
+                        <div class="shop-category-image-wrapper">
+                            <img src="images/categories/tables.webp" alt="Wood tables category"
+                                class="shop-category-image">
+                        </div>
+                        <span class="shop-category-label">Tables</span>
+
+                    </button>
+
+                    <button type="button" class="shop-category-card">
+
+                        <div class="shop-category-image-wrapper">
+                            <img src="images/categories/accessories.webp" alt="Wood accessories category"
+                                class="shop-category-image">
+                        </div>
+                        <span class="shop-category-label">Accessories</span>
+
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!--****      ---------------        ****-->
+        <!--****       featured panel        ****-->
+        <!--****      ---------------        ****-->
+        <!-- the featured panel shows the user an option to filter the featured by tag
+            it dispalys a list of tag 
+            and under it a list of product that belong to the active tag
+            and next to it an option to veiw all feature products 
+        -->
+        <section class="featured-panel" id="featured-panel">
+            <div class="featured-panel-inner">
+                <div class="featured-tags-section">
+                    <button type="button" class="featured-tags-arrow featured-tags-arrow-left"
+                        aria-label="Scroll tags left">
+                        <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
+                    </button>
+
+                    <div class="featured-tags-wrapper">
+                        <div class="featured-tags">
+                            <!-- buttons -->
+                        </div>
+                    </div>
+
+                    <button type="button" class="featured-tags-arrow featured-tags-arrow-right"
+                        aria-label="Scroll tags right">
+                        <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
+                    </button>
+                </div>
+
+                <div class="featured-products">
+                    <a href="products.html?filter=featured" class="featured-view-all-link">View all featured</a>
+                </div>
+
+                <a href="products.html?filter=featured" class="featured-callout">
+                    <span class="featured-callout-eyebrow">Featured collection</span>
+                    <h2 class="featured-callout-title">Come check our best sellers</h2>
+                </a>
+            </div>
+        </section>
+
+        <!--****      ---------------        ****-->
+        <!--****       Deals  panel          ****-->
+        <!--****      ---------------        ****-->
+        <section class="deals-panel" id="deals-panel">
+            <div class="deals-panel-inner">
+                <div class="deals-tags-section">
+                    <button type="button" class="deals-tags-arrow deals-tags-arrow-left"
+                        aria-label="Scroll deals tags left">
+                        <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
+                    </button>
+
+                    <div class="deals-tags-wrapper">
+                        <div class="deals-tags">
+                            <!-- JS will render tag buttons -->
+                        </div>
+                    </div>
+
+                    <button type="button" class="deals-tags-arrow deals-tags-arrow-right"
+                        aria-label="Scroll deals tags right">
+                        <img src="images/ui/arrows/arrow.svg" alt="" class="icon">
+                    </button>
+                </div>
+
+                <div class="deals-products">
+                    <!-- JS will render deal product cards -->
+                </div>
+
+                <a href="products.html?filter=onsale" class="deals-callout">
+                    <span class="deals-callout-eyebrow">Special offers</span>
+                    <h2 class="deals-callout-title">Come check our best deals</h2>
+                </a>
+            </div>
+        </section>
+
+
+
+
+        <!--  ----------------------------------------------------------------------- -->
+        <!--  ------------------- mobile breakpoint specific ------------------------ -->
+        <!--  ----------------------------------------------------------------------- -->
+        <!-- 
+            clicking the hamburger button displays a menue of the nav links that takes all the scrren
+        -->
+        <aside class="mobile-menu" aria-label="Mobile navigation">
+            <div class="mobile-menu-content">
+
+                <button type="button" class="mobile-close-btn" aria-label="Close menu">
+                    <img src="images/ui/icons/icon-close.svg" alt="" class="icon">
+                </button>
+
+                <ul class="mobile-nav-links">
+                    <li>
+                        <a href="products.html?filter=all" class="mobile-nav-link">Shop</a>
+                    </li>
+                    <li>
+                        <a href="products.html?filter=featured" class="mobile-nav-link">Featured</a>
+                    </li>
+                    <li>
+                        <a href="products.html?filter=onsale" class="mobile-nav-link">Deals</a>
+                    </li>
+                    <li>
+                        <a href="products.html" class="mobile-nav-link">Services</a>
+                    </li>
+                </ul>
+
+            </div>
+        </aside>
+
+
     </header>
 
-    <main class="site-main">
+    <main>
+      <section>
+        <h1>Contact</h1>
+          <p>
+            Have a question about Carve&amp;Co. or need help with an order? Send us a
+            message using the form below.
+          </p>
 
+          <p>
+            Whether you're looking for product details, custom piece information,
+            shipping help, or general support, we'd love to hear from you.
+          </p>
+      </section>
+
+      <section>
+        <h2>Contact Form</h2>
+
+        <!--AI-assisted: Used ChatGPT to help with this form structure-->
+        <form id="contact-form">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+            <small class="error-message"></small>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" />
+            <small class="error-message"></small>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+            <small class="error-message"></small>
+          </div>
+
+          <button type="submit">Submit</button>
+
+          <p id="form-success"></p>
+        </form>
+      </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <nav>
-
-            </nav>
-        </div>
+    <footer>
+      <p>&copy; 2026 Carve&amp;Co. All rights reserved.</p>
     </footer>
-    <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
-</body>
 
+    <script src="script.js"></script>
+  </body>
 </html>
