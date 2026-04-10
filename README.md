@@ -77,7 +77,7 @@ Here are the contributing team members and their student numbers.
 I contributed to various aspects of the project. In regard to the development of the website, I fully implemented the hero section and all of its features, as well I created the contact page and its features. Additionally, I worked on troubleshooting, testing, and ensuring successful merging during the development of the website and the project's branches. Externally, I created, detailed, and composed the presentation of our project, and our team worked together to make our demonstration. Lastly, I also took part in the early design stages of the website, such as branding, pages, page features, and website artwork.
 
 ### Hero Slideshow
-- Redesigned and fully implemented a completely dynamic, scallable carousel slideshow for the hero section with navigation controls and interactive media.
+- Redesigned and fully implemented a completely dynamic, scallable carousel slideshow for the hero section with navigation controls and interactive media
 - Created the JavaScript logic behind the autoplay feature of the carousel slides
 - Created the JavaScript logic behind the navigation arrows and slide dots
 - Created the JavaScript logic behind the mobile swipe behaviour for the slides
