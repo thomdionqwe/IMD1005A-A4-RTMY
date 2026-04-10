@@ -42,44 +42,44 @@ Desktop Navigation
 - All navigation menus are sticky and fully interactive.
 - Shop Menu:
   -Includes:
-      “Shop All” link
-      Grid of 3 main categories (tables, shelves, accessories)
+     - “Shop All” link
+     - Grid of 3 main categories (tables, shelves, accessories)
   - Each link:
-      Passes selected category to the products page for filtering
-      “Shop All” applies no filters
+     - Passes selected category to the products page for filtering
+     - “Shop All” applies no filters
   - Products page is not fully implemented yet, so navigation is not active
 
 - Featured Menu
   - Displays:
-      Scrollable list of tags (best sellers)
-      Scrollable product list filtered by selected tag
+     - Scrollable list of tags (best sellers)
+     - Scrollable product list filtered by selected tag
   - Users can:
-      Browse featured products by tag
-      Navigate using keyboard (fully accessible)
+      - Browse featured products by tag
+      - Navigate using keyboard (fully accessible)
   - Includes:
-      “Shop All Best Sellers” link (passes featured filter)
+      - “Shop All Best Sellers” link (passes featured filter)
   - Product links are not active yet (product page not implemented)
     
 - Deals Menu
-    Same structure and behavior as Featured menu
-    Displays on-sale products instead of featured items
-    Includes tag filtering and scrollable product list
+    - Same structure and behavior as Featured menu
+    - Displays on-sale products instead of featured items
+    - Includes tag filtering and scrollable product list
   
 - Interactions & Accessibility
-  All menus support keyboard navigation
-  Escape key closes all open menus
-  Tag lists and product lists are horizontally scrollable
-  UI state is managed so only one menu is active at a time
+  - All menus support keyboard navigation
+  - Escape key closes all open menus
+  - Tag lists and product lists are horizontally scrollable
+  - UI state is managed so only one menu is active at a time
   
 - User Actions & Icons
-  Cart icon → cart functionality integrated (UI + data logic)
-  Wishlist icon → planned (page not implemented yet)
-  Login icon → allows user authentication
-  After login:
-      Navigation reads user data from localStorage
-      If user type is business:
-      Shows “Add Product” button
-      Grants access to product upload functionality
+  - Cart icon → cart functionality integrated (UI + data logic)
+  - Wishlist icon → planned (page not implemented yet)
+  - Login icon → allows user authentication
+  - After login:
+      - Navigation reads user data from localStorage
+      - If user type is business:
+      - Shows “Add Product” button
+      - Grants access to product upload functionality
 ---
 Team member contributions
 ---
