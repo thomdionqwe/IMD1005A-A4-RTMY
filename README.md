@@ -14,10 +14,8 @@ Here are the contributing team members and their student numbers.
 
 ## README TODO
 
-- [x] Site Description
-- [x] Navigation Guide
-- [ ] Team member contributions (Missing Thomas and Ryan)
-- [x] AI-Disclosure
+- [ ] Team member contributions (Missing Thomas)
+- [ ] AI-Disclosure (Vue.js)
 ---
 # AI Disclosure
 - Used in refactoring repetitive CSS
@@ -124,7 +122,7 @@ I contributed extensively to the core functionality and interactive features of 
 - Added smooth validation feedback and user interaction flows
 - Ensured consistent behavior and data handling across all pages
 
-### Yousra Albizri
+## Yousra Albizri
 I contributed to both the design and frontend development of this project, focusing on building a responsive, interactive, and scalable user interface.
 
 ### Design & Planning
@@ -166,6 +164,5 @@ I contributed to both the design and frontend development of this project, focus
 - Worked across multiple feature branches
 - Created and merged pull requests into main
 - Maintained clear commits and coordinated with the team
-
 
 ## Thomas Dion
