@@ -76,6 +76,32 @@ Here are the contributing team members and their student numbers.
 # Team member contributions
 
 ## Ryan Bolt
+I contributed to various aspects of the project. In regard to the development of the website, I fully implemented the hero section and all of its features, as well I created the contact page and its features. Additionally, I worked on troubleshooting, testing, and ensuring successful merging during the development of the website and the project's branches. Externally, I created, detailed, and composed the presentation of our project, and our team worked together to make our demonstration. Lastly, I also took part in the early design stages of the website, such as branding, pages, page features, and website artwork.
+
+### Hero Slideshow
+- Redesigned and fully implemented a completely dynamic, scallable carousel slideshow for the hero section with navigation controls and interactive media.
+- Created the JavaScript logic behind the autoplay feature of the carousel slides
+- Created the JavaScript logic behind the navigation arrows and slide dots
+- Created the JavaScript logic behind the mobile swipe behaviour for the slides
+- Implemented the dynamic scalling for the hero section and its content
+- Integrated the styling to fruition and resolved any conflicts with other styling
+- Designed the background art behind each slide of the hero section
+
+### Contact Page
+- Designed and implemented the contact page and its styling
+- Created the simple JavaScript behind the form functionality
+- Added the navigation across the main page and the contact page itself
+
+### Troubleshooting, Testing, and Project Merging
+- Ensured all website functions worked after merging project branches through testing
+- Debugged and troubleshooted the various branches to resolve HTML, JavaScript, and CSS conficts
+- Assembled the complete and final version of the website ready for presentation and use
+
+### Presentation and Slides
+- Created the slides and designed the art within them
+- Composed the presentation structure and flow
+- The team as a whole worked to make our demonstration
+- Created slide notes, speaker notes, and demonstration notes
 
 ## Mihir Panchal
 I contributed extensively to the core functionality and interactive features of this project. My work focused on building a smooth, reliable, and user‑friendly experience across the entire website.
