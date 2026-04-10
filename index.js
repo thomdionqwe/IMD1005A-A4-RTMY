@@ -2,36 +2,34 @@ function loadProductsToIndex() {
   const products = JSON.parse(localStorage.getItem("products")) || [];
   const grid = document.getElementById("productGrid");
 
-  if (!grid) return;
-
   grid.innerHTML = "";
 
   products.forEach((product) => {
     grid.innerHTML += `
-      <div class="product-card">
-        <div class="product-img-box">
-          <img src="${product.thumbnailImage}" alt="${product.name}">
-        </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="${product.thumbnailImage}" alt="${product.name}">
+                </div>
 
-        <div class="product-info">
-          <h3>${product.name}</h3>
+                <div class="product-info">
+                    <h3>${product.name}</h3>
 
-          <div class="product-rating">
-            ${"★".repeat(Math.round(product.rating))}${"☆".repeat(5 - Math.round(product.rating))}
-          </div>
+                    <div class="product-rating">
+                        ${"★".repeat(product.rating)}${"☆".repeat(5 - product.rating)}
+                    </div>
 
-          <p class="product-price">$${product.price.toFixed(2)}</p>
+                    <p class="product-price">$${product.price.toFixed(2)}</p>
 
-          <p class="product-dimensions">
-            ${product.dimensions || "Dimensions not available"}
-          </p>
+                    <p class="product-dimensions">
+                        ${product.dimensions || "Dimensions not available"}
+                    </p>
 
-          <button class="btn add-cart-btn" onclick="addToCart('${product.id}')">
-            Add to Cart
-          </button>
-        </div>
-      </div>
-    `;
+                    <button class="btn add-cart-btn" onclick="addToCart('${product.id}')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        `;
   });
 }
 
@@ -40,8 +38,6 @@ function loadProductsToIndex() {
 function loadProductsByMainCategories() {
   const products = JSON.parse(localStorage.getItem("products")) || [];
   const container = document.getElementById("categorySections");
-
-  if (!container) return;
 
   const categories = {
     Tables: products.filter((p) => p.category === "table"),
@@ -57,39 +53,41 @@ function loadProductsByMainCategories() {
     if (items.length === 0) return;
 
     container.innerHTML += `
-      <h2 class="category-title">${categoryName}</h2>
-      <div class="product-grid">
-        ${items
-          .map(
-            (product) => `
-              <div class="product-card">
-                <div class="product-img-box">
-                  <img src="${product.thumbnailImage}" alt="${product.name}">
-                </div>
+            <h2 class="category-title">${categoryName}</h2>
+            <div class="product-grid">
+                ${items
+                  .map(
+                    (product) => `
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="${product.thumbnailImage}" alt="${product.name}">
+                        </div>
 
-                <div class="product-info">
-                  <h3>${product.name}</h3>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
 
-                  <div class="product-rating">
-                    ${"★".repeat(Math.round(product.rating))}${"☆".repeat(5 - Math.round(product.rating))}
-                  </div>
+                            <div class="product-rating">
+                                ${"★".repeat(product.rating)}${"☆".repeat(5 - product.rating)}
+                            </div>
 
-                  <p class="product-price">$${product.price.toFixed(2)}</p>
+                            <p class="product-price">$${product.price.toFixed(2)}</p>
 
-                  <p class="product-dimensions">${product.dimensions}</p>
+                            <p class="product-dimensions">${product.dimensions}</p>
 
-                  <button class="add-cart-btn" onclick="addToCart('${product.id}')">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            `
-          )
-          .join("")}
-      </div>
-    `;
+                            <button class="add-cart-btn" onclick="addToCart('${product.id}')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `,
+                  )
+                  .join("")}
+            </div>
+        `;
   });
 }
+
+loadProductsByMainCategories();
 
 function showWelcomeUser() {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -100,175 +98,160 @@ function showWelcomeUser() {
   }
 }
 
-function getRandomItem(array) {
-  return array[Math.floor(Math.random() * array.length)];
+showWelcomeUser();
+
+function getRandomItem(items) {
+  if (!Array.isArray(items) || items.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * items.length);
+  return items[randomIndex];
 }
 
-function getRandomItems(array, count) {
-  const shuffled = [...array].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-}
+function renderHeroProductCard(product, slotId, options = {}) {
+  const slot = document.getElementById(slotId);
+  if (!slot) return;
 
-function renderHeroDealCard() {
-  const dealCard = document.getElementById("heroDealCard");
-  if (!dealCard) return;
+  if (!product) {
+    slot.innerHTML = `
+      <div class="hero-card-preview">
+        <div class="hero-card-preview-body">
+          <h3>No product available</h3>
+          <p>Please add matching products to see this hero card.</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
 
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  const dealProducts = products.filter((product) => product.onSale);
+  const {
+    showSaleBadge = false,
+    cardAltPrefix = "Product",
+  } = options;
 
-  if (dealProducts.length === 0) return;
+  const safeDimensions = product.dimensions || "Dimensions not available";
+  const productPrice =
+    typeof product.price === "number" ? `$${product.price.toFixed(2)}` : "";
 
-  const featuredDeal = getRandomItem(dealProducts);
-
-  dealCard.innerHTML = `
-    <a href="products.html" class="hero-deal-card-link">
-      <div class="hero-deal-card-image-wrap">
-        <img
-          src="${featuredDeal.featuredImage || featuredDeal.thumbnailImage}"
-          alt="${featuredDeal.name}"
-          class="hero-deal-card-image"
-        >
-        <img
-          src="images/ui/icons/sale.png"
-          alt="On sale"
-          class="hero-deal-card-sale-badge"
-        >
+  slot.innerHTML = `
+    <div class="hero-card-preview">
+      <div class="hero-card-preview-image hero-card-preview-badge-wrap">
+        ${
+          showSaleBadge
+            ? `<img src="images/ui/icons/sale.png" alt="" class="hero-card-sale-badge">`
+            : ""
+        }
+        <img src="${product.thumbnailImage}" alt="${cardAltPrefix}: ${product.name}">
       </div>
 
-      <div class="hero-deal-card-details">
-        <h3 class="hero-deal-card-name">${featuredDeal.name}</h3>
-        <p class="hero-deal-card-price">$${featuredDeal.price.toFixed(2)}</p>
+      <div class="hero-card-preview-body">
+        <h3>${product.name}</h3>
+        <p>${productPrice}</p>
+        <p>${safeDimensions}</p>
       </div>
-    </a>
+    </div>
   `;
 }
 
-function renderHeroTrendingItems() {
-  const trendingRow = document.getElementById("heroTrendingRow");
-  if (!trendingRow) return;
-
+function populateHeroProductSlides() {
   const products = JSON.parse(localStorage.getItem("products")) || [];
-  const featuredProducts = products.filter((product) => product.featured);
 
-  if (featuredProducts.length === 0) return;
+  const dealProducts = products.filter((product) => {
+    return product.onSale === true || product.sale === true;
+  });
 
-  const trendingItems = getRandomItems(featuredProducts, 3);
+  const featuredProducts = products.filter((product) => {
+    return product.featured === true;
+  });
 
-  trendingRow.innerHTML = trendingItems
-    .map(
-      (product) => `
-        <a href="products.html" class="hero-trending-card">
-          <div class="hero-trending-card-image-wrap">
-            <img
-              src="${product.featuredImage || product.thumbnailImage}"
-              alt="${product.name}"
-            >
-          </div>
-          <h3 class="hero-trending-card-name">${product.name}</h3>
-        </a>
-      `
-    )
-    .join("");
+  const randomDealProduct = getRandomItem(dealProducts);
+  const randomFeaturedProduct = getRandomItem(featuredProducts);
+
+  renderHeroProductCard(randomDealProduct, "heroDealSlot", {
+    showSaleBadge: true,
+    cardAltPrefix: "Deal item",
+  });
+
+  renderHeroProductCard(randomFeaturedProduct, "heroTrendingSlot", {
+    showSaleBadge: false,
+    cardAltPrefix: "Trending item",
+  });
 }
 
-function initializeHeroCarousel() {
-  const carousel = document.querySelector(".hero-carousel");
-  if (!carousel) return;
+populateHeroProductSlides();
 
-  const track = carousel.querySelector(".hero-carousel-track");
-  const slides = carousel.querySelectorAll(".hero-slide");
-  const dots = carousel.querySelectorAll(".hero-carousel-dot");
-  const prevBtn = carousel.querySelector(".hero-carousel-arrow--left");
-  const nextBtn = carousel.querySelector(".hero-carousel-arrow--right");
+function initHeroCarousel() {
+  const slides = document.getElementById("heroSlides");
+  const prevBtn = document.getElementById("heroPrevBtn");
+  const nextBtn = document.getElementById("heroNextBtn");
+  const dots = document.querySelectorAll(".hero-dot");
 
-  let currentIndex = 0;
-  let autoSlideInterval = null;
-  const autoSlideDelay = 5000;
+  if (!slides || !prevBtn || !nextBtn || dots.length === 0) return;
 
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentIndex * 25}%)`;
+  let currentSlide = 0;
+  const totalSlides = dots.length;
+  const autoplayDelay = 5000;
+  let autoplayInterval = null;
+
+  function updateHeroCarousel() {
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
 
     dots.forEach((dot, index) => {
-      dot.classList.toggle("is-active", index === currentIndex);
+      dot.classList.toggle("is-active", index === currentSlide);
     });
   }
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateCarousel();
+  function goToSlide(index) {
+    currentSlide = (index + totalSlides) % totalSlides;
+    updateHeroCarousel();
   }
 
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateCarousel();
+  function goToNextSlide() {
+    goToSlide(currentSlide + 1);
   }
 
-  function startAutoSlide() {
-    stopAutoSlide();
-    autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
+  function goToPrevSlide() {
+    goToSlide(currentSlide - 1);
   }
 
-  function stopAutoSlide() {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = null;
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      goToNextSlide();
+    }, autoplayDelay);
+  }
+
+  function stopAutoplay() {
+    if (autoplayInterval !== null) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
     }
   }
 
-  function restartAutoSlide() {
-    startAutoSlide();
+  function resetAutoplay() {
+    startAutoplay();
   }
 
-  prevBtn.addEventListener("click", function () {
-    prevSlide();
-    restartAutoSlide();
+  prevBtn.addEventListener("click", () => {
+    goToPrevSlide();
+    resetAutoplay();
   });
 
-  nextBtn.addEventListener("click", function () {
-    nextSlide();
-    restartAutoSlide();
+  nextBtn.addEventListener("click", () => {
+    goToNextSlide();
+    resetAutoplay();
   });
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", function () {
-      currentIndex = index;
-      updateCarousel();
-      restartAutoSlide();
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const slideIndex = parseInt(dot.dataset.slide, 10);
+      goToSlide(slideIndex);
+      resetAutoplay();
     });
   });
 
-  carousel.addEventListener("mouseenter", stopAutoSlide);
-  carousel.addEventListener("mouseleave", startAutoSlide);
-
-  //Added swipe functionality to the carousel
-  let startX = 0;
-  let endX = 0;
-
-  carousel.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-  });
-
-  carousel.addEventListener("touchend", (e) => {
-    endX = e.changedTouches[0].clientX;
-
-    const diff = startX - endX;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-      restartAutoSlide();
-    }
-  });
-
-  updateCarousel();
-  startAutoSlide();
+  updateHeroCarousel();
+  startAutoplay();
 }
 
-loadProductsByMainCategories();
-showWelcomeUser();
-renderHeroDealCard();
-renderHeroTrendingItems();
-initializeHeroCarousel();
+initHeroCarousel();
+
+// console.log(JSON.parse(localStorage.getItem("products")));
