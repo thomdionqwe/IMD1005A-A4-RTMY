@@ -300,7 +300,127 @@
     </header>
 
     <main class="site-main">
-        <p id="welcomeUser" class="welcome-text"></p>
+
+        <section class="hero-carousel" aria-label="Homepage hero slideshow">
+            <div class="hero-carousel-viewport">
+                <div class="hero-carousel-track">
+
+                    <!--Slide 1: Mission Statement-->
+                    <article class="hero-slide hero-slide--mission">
+                        <div class="hero-slide-background">
+                            <img src="images/hero/hero-slide-1.png" alt="Carve & Co. crafted wood furniture">
+                        </div>
+
+                        <div class="hero-slide-content hero-slide-content--top-left">
+                            <h1 class="hero-slide-title">Carve&amp;Co. - committed to the craft</h1>
+                            <p class="hero-slide-text">
+                                Mission statement 
+                            </p>
+                        </div>
+                    </article>
+
+                    <!--Slide 2: Deals-->
+                    <article class="hero-slide hero-slide--deals">
+                        <div class="hero-slide-background">
+                            <img src="images/hero/hero-slide-2.png" alt="Featured deals background">
+                        </div>
+
+                        <div class="hero-slide-content hero-slide-content--center">
+                            <h2 class="hero-slide-title hero-slide-title--center">
+                                Shop our greatest deals!
+                            </h2>
+
+                            <div class="hero-deal-card" id="heroDealCard">
+                                <div class="hero-deal-card-image-wrap">
+                                    <img src="images/products/shelves/shelf_4_1.webp" alt="Featured deal item"
+                                        class="hero-deal-card-image">
+                                    <img src="images/ui/icons/sale.png" alt="On sale" class="hero-deal-card-sale-badge">
+                                </div>
+
+                                <div class="hero-deal-card-details">
+                                    <h3 class="hero-deal-card-name">Random deal item name</h3>
+                                    <p class="hero-deal-card-price">$99.99</p>
+                                </div>
+                            </div>
+
+                            <a href="products.html" class="hero-slide-button">Shop now</a>
+                        </div>
+                    </article>
+
+                    <!--Slide 3: Trending-->
+                    <article class="hero-slide hero-slide--trending">
+                        <div class="hero-slide-content hero-slide-content--top-left">
+                            <h2 class="hero-slide-title">Check out our trending products!</h2>
+
+                            <div class="hero-trending-row" id="heroTrendingRow">
+                                <article class="hero-trending-card">
+                                    <div class="hero-trending-card-image-wrap">
+                                        <img src="images/products/tables/table_1_1.webp" alt="Trending product 1">
+                                    </div>
+                                    <h3 class="hero-trending-card-name">Trending item 1</h3>
+                                </article>
+
+                                <article class="hero-trending-card">
+                                    <div class="hero-trending-card-image-wrap">
+                                        <img src="images/products/shelves/shelf_1_1.webp" alt="Trending product 2">
+                                    </div>
+                                    <h3 class="hero-trending-card-name">Trending item 2</h3>
+                                </article>
+
+                                <article class="hero-trending-card">
+                                    <div class="hero-trending-card-image-wrap">
+                                        <img src="images/products/accessories/accessory_1_1.webp" alt="Trending product 3">
+                                    </div>
+                                    <h3 class="hero-trending-card-name">Trending item 3</h3>
+                                </article>
+                            </div>
+
+                            <div class="hero-slide-actions">
+                                <a href="products.html" class="hero-slide-button">Shop now</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!--Slide 4: Sign Up-->
+                    <article class="hero-slide hero-slide--signup">
+                        <div class="hero-slide-content hero-slide-content--center">
+                            <h2 class="hero-slide-title hero-slide-title--center">
+                                Join Carve&amp;Co. - sign up today!
+                            </h2>
+
+                            <div class="hero-signup-visual">
+                                <img src="images/hero/hero-slide-4.png" alt="Join Carve & Co.">
+                            </div>
+
+                            <a href="registration.html" class="hero-slide-button">Sign Up</a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!--Nav-->
+                <button class="hero-carousel-arrow hero-carousel-arrow--left" type="button" aria-label="Previous slide">
+                    <img src="images/ui/arrows/arrow.svg" alt="">
+                </button>
+
+                <button class="hero-carousel-arrow hero-carousel-arrow--right" type="button" aria-label="Next slide">
+                    <img src="images/ui/arrows/arrow.svg" alt="">
+                </button>
+
+                <!--Nav Dots-->
+                <div class="hero-carousel-dots" aria-label="Choose hero slide">
+                    <button class="hero-carousel-dot is-active" type="button" aria-label="Go to slide 1"></button>
+                    <button class="hero-carousel-dot" type="button" aria-label="Go to slide 2"></button>
+                    <button class="hero-carousel-dot" type="button" aria-label="Go to slide 3"></button>
+                    <button class="hero-carousel-dot" type="button" aria-label="Go to slide 4"></button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    <p id="welcomeUser" class="welcome-text"></p>
 
         <!-- <section class="home-featured">
             <div class="container">
