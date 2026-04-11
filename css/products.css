@@ -1,0 +1,38 @@
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin: var(--space-xl);
+    gap: var(--space-md);
+
+    button, li{
+        display: inline-flex;
+        align-items: center;
+        background: #fff;
+        border-radius: var(--radius-pill);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        padding: var(--space-sm) var(--space-xl) var(--space-sm) var(--space-xl);
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: var(--color-primary);
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    button:hover:not(.disabled), li:hover:not(.disabled):not(.active) {
+        transition: all 0.1s ease-out;
+        background-color: var(--color-secondary);
+    }
+
+    .disabled {
+        background-color: #f7f5f3;
+        color: var(--color-text-light);
+        cursor: default;
+    }
+
+    > ul {
+        display: flex;
+        gap: inherit;
+    }
+}
