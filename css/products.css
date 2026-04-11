@@ -1,12 +1,14 @@
 #pagination-controls {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin: var(--space-xl);
     gap: var(--space-md);
 
     button, li{
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         background: #fff;
         border-radius: var(--radius-pill);
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
@@ -25,6 +27,12 @@
         background-color: var(--color-secondary);
     }
 
+    @media screen and (width <= 40rem){
+        *{
+            flex-grow: 1;
+        }
+    }
+
     .disabled {
         background-color: #f7f5f3;
         color: var(--color-text-light);
@@ -33,6 +41,8 @@
 
     > ul {
         display: flex;
+        flex-wrap: inherit;
         gap: inherit;
     }
+
 }
