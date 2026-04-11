@@ -1,6 +1,6 @@
 // Constants
-const PAGE_LENGTH = 6; // Amount of items to show in a page. (Not used)
-const PAGE_BUTTON_MAX = 5;
+const PAGE_LENGTH = 12; // Amount of items to show in a page.
+const PAGE_BUTTON_MAX = 5; // Max amount of pagination buttons.
 
 /**
  * Shows the list of products
@@ -79,7 +79,10 @@ function createNavigation(current, pages) {
 
 let currentPage = 0;
 
-
+/**
+ * Navigates to the requested page.
+ * @param {number} page - Page to navigate to
+ */
 function navigate(page) {
     // Precondition: Don't do anything if already on the correct page
     if (page === currentPage) {
@@ -91,10 +94,8 @@ function navigate(page) {
         return;
     }
 
-
-    const allProducts = JSON.parse(localStorage.getItem("products")) || [];
-
     // condition: Check if page number is beyond the range.
+    const allProducts = JSON.parse(localStorage.getItem("products")) || [];
     let lastPage = Math.ceil(allProducts.length / PAGE_LENGTH);
     if (page > lastPage) {
         return;
@@ -102,8 +103,6 @@ function navigate(page) {
 
     console.debug(`Navigating to page: ${page}`)
     currentPage = page;
-
-    
 
 
     // Create an array that contains the products of the relevant page.
@@ -116,7 +115,6 @@ function navigate(page) {
 
     // Create an array that contains the numbers we want to show as buttons 
     // TODO: Fix Algorithm not always taking full advantage of button max
-    
     let buttons = [];
     let i = page - Math.floor(PAGE_BUTTON_MAX/2);
     while (buttons.length < PAGE_BUTTON_MAX & i <= lastPage) {
