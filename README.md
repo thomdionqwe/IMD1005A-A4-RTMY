@@ -13,17 +13,13 @@ Here are the contributing team members and their student numbers.
 | Thomas Dion    | 101391537    | 041224655     |
 | Yousra Albizri | 101392056    |               |
 
-## README TODO
-
-- [ ] Team member contributions (Missing Thomas)
-- [ ] AI-Disclosure (Vue.js)
-
 ---
 
 # AI Disclosure
 
 - Used in refactoring repetitive CSS
 - All AI-assisted code was reviewed, understood, and clearly commented
+- Copilot AI aided in the integration of Vue.js and rendering with Vue.js
 
 ---
 
