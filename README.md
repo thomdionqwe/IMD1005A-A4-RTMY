@@ -197,3 +197,8 @@ I contributed to both the design and frontend development of this project, focus
 - Maintained clear commits and coordinated with the team
 
 ## Thomas Dion
+- Established collaborative workspaces (Figma & Github repository)
+- Fixed merge conflicts and any other issues caused by collaborations
+- Products page
+  - Modular approach with pagination support for proper interaction with large databases
+- Troubleshooting of last-minute changes
